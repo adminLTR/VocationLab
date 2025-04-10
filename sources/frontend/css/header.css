@@ -1,0 +1,24 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+  
+  nav {
+    background: transparent;
+  }
+  
+  nav ul {
+    background: transparent;
+    font-family: Mingzat;
+  }
+  
+  nav li {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    padding: 0 2rem;
+  }
+  
