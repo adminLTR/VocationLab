@@ -4,4 +4,4 @@ import chromadb
 
 persist_directory = "./chroma_db"
 client = chromadb.PersistentClient(path=persist_directory)
-collection = client.get_or_create_collection(name="my_collection")
+collection = client.get_or_create_collection(name="careers")

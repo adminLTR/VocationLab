@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from .chroma_client import collection
 import json
@@ -12,7 +13,6 @@ def buscar_similares(request):
 
         if not query:
             return JsonResponse({'error': 'No se recibió un texto para buscar.'}, status=400)
-
 
         results = collection.query(
             query_texts=[query],
