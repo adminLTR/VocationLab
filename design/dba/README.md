@@ -10,3 +10,8 @@ email | Varchar(200) |  | Correo electrónico
 name | Varchar(100) |  | Nombre
 surname | Varchar(100) |  | Apellido
 birth | Date |  | Fecha de nacimiento
+
+## City
+Campo | Tipo | Clave | Descripción
+id_city | Integer | PK | Identificador de ciudad
+name | Varchar(100) |  | Nombre de la ciudad
