@@ -1,3 +1,6 @@
+# Data Dictionary
+
+## User
 Campo | Tipo | Clave | Descripción
 ----- | ---- | ----- | ------------
 id_user | Integer | PK | Identificador único de usuario
