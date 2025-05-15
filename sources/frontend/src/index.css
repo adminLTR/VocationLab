@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Medula+One&display=swap');
 @import "tailwindcss";
 
-* {
-    font-family: "Inter";
+@theme {
+  --font-inter: "Inter", sans-serif; 
+  --font-medula: "Medula One", sans-serif; 
+}
+
+body {
+  background-image: url("bg_home.png");
+  background-size: cover;
 }
