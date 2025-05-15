@@ -10,7 +10,7 @@ export default function Layout() {
     return (
         <div>
             <Header setShowModal={setShowModal}/>
-            <main className="max-w-10/12 mx-auto my-20">
+            <main className="max-w-10/12 mx-auto">
                 <Outlet/>
             </main>
             {showModal && <ModalLogin setShowModal={setShowModal}/>}

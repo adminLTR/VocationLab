@@ -1,18 +1,11 @@
-import styled from "styled-components";
-
 import UsersRecomendations from "./components/UsersRecomendations";
+import Title from "../../components/Title";
 
-const Title = styled.h1`
-  font-size: 128px;
-  font-family: "Medula One", system-ui;
-  margin-top: 2rem;
-  line-height: 80%;
-`;
-
-export default function Home() {
+export default function HomePage() {
 
 
-    return <div className="home-page">
+    return <div className="home-page my-20">
+        <div className="fullscreen-background"></div>
         <Title>
             <span>Transformamos la</span><br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-main-500 to-secondary-600">
