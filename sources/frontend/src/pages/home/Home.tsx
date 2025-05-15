@@ -4,7 +4,6 @@ import UsersRecomendations from "./components/UsersRecomendations";
 const Title = styled.h1`
   font-size: 128px;
   font-family: "Medula One", system-ui;
-  color: #2c3e50;
   margin-top: 2rem;
   line-height: 80%;
 `;
@@ -22,12 +21,12 @@ export default function Home() {
         </p>
         <div className="flex space-x-2">
             <button style={{fontSize: '20px'}} 
-            className="px-8 py-3 cursor-pointer flex items-center gap-2 font-inter rounded-full text-white bg-gradient-to-r opacity-[.72] hover:opacity-100 from-main-400 to-main-300 transition">
+            className="px-8 py-3 font-bold cursor-pointer flex items-center gap-2 font-inter rounded-full text-white bg-gradient-to-r opacity-[.72] hover:opacity-100 from-main-400 to-main-300 transition">
                 <i className="fa-solid fa-rocket" style={{fontSize: '18px'}}></i>
                 Iniciar test
             </button>
             <button style={{fontSize: '20px'}} 
-            className="px-8 py-3 cursor-pointer flex items-center gap-2 font-inter rounded-full bg-white text-main-600 hover:bg-main-50 transition">
+            className="px-8 py-3 cursor-pointer flex items-center font-bold gap-2 font-inter rounded-full bg-white text-main-600 hover:bg-main-50 transition">
                 <i className="fa-solid fa-paper-plane"></i>
                 Ver demo
             </button>
