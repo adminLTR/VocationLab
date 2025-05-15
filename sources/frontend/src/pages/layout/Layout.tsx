@@ -5,7 +5,7 @@ export default function Layout() {
     return (
         <div>
             <Header/>
-            <main className="max-w-7xl mx-auto my-10">
+            <main className="max-w-10/12 mx-auto my-20">
                 <Outlet/>
             </main>
         </div>
