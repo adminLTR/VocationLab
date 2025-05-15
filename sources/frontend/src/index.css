@@ -22,7 +22,14 @@
   --color-secondary-600: #E752DD;
 }
 
-body {
+.fullscreen-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-image: url("bg_home.png");
   background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
