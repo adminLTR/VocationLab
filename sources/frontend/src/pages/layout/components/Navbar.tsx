@@ -7,7 +7,7 @@ interface NavLinkProps {
   active?:boolean
 }
 function NavLink({children, to, active=false} : NavLinkProps) {
-    return <Link to={to} className={`transition font-bold px-2 pb-2 hover:text-black ${active?'border-b-4 text-black':'border-b-0 text-gray-350'} border-b-main-200`}>
+    return <Link to={to} className={`transition font-bold px-2 py-2 hover:text-black ${active?'border-b-4 text-black':'border-b-0 text-gray-350'} border-b-main-200`}>
         {children}
     </Link>
 }
@@ -15,7 +15,7 @@ function NavLink({children, to, active=false} : NavLinkProps) {
 export default function Navbar() {
     const location = useLocation();
 
-    return <nav className="flex-1 flex justify-center space-x-4 mt-2 md:mt-0">
+    return <nav className="flex justify-center space-x-4 pt-1 px-3 rounded-3xl mt-2 md:mt-0">
         <NavLink to="/" active={location.pathname === '/'}>
             Inicio
         </NavLink>
