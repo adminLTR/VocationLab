@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import UsersRecomendations from "./components/UsersRecomendations";
 
 const Title = styled.h1`
@@ -9,6 +10,8 @@ const Title = styled.h1`
 `;
 
 export default function Home() {
+
+
     return <div className="home-page">
         <Title>
             <span>Transformamos la</span><br />

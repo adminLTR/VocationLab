@@ -1,13 +1,19 @@
+import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header.tsx"
+import ModalLogin from "../../components/ModalLogin.tsx";
 
 export default function Layout() {
+
+    const [showModal, setShowModal] = useState(false);
+
     return (
         <div>
-            <Header/>
+            <Header setShowModal={setShowModal}/>
             <main className="max-w-10/12 mx-auto my-20">
                 <Outlet/>
             </main>
+            {showModal && <ModalLogin setShowModal={setShowModal}/>}
         </div>
     )
 }
