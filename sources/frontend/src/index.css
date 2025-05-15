@@ -4,6 +4,20 @@
 @theme {
   --font-inter: "Inter", sans-serif; 
   --font-medula: "Medula One", sans-serif; 
+
+  --color-gray-350: #929292;
+  
+  --color-main-50: #F6F3FF;
+  --color-main-100: #E6DEFF;
+  --color-main-200: #B8AAFF;
+  --color-main-300: #5748F3;
+  --color-main-400: #620AFF;
+  --color-main-500: #6338FF;
+  --color-main-600: #775CFE;
+  --color-main-700: #785DFF;
+  
+  --color-secondary-500: #E24EF4;
+  --color-secondary-600: #E752DD;
 }
 
 body {

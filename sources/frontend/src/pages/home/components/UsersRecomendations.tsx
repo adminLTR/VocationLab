@@ -7,15 +7,15 @@ interface UsersRecomendationsProps {
 
 export default function UsersRecomendations({ usuarios, recomiendan, avatars } :UsersRecomendationsProps ) {
   return (
-    <div className="flex items-center rounded-full border border-gray-300 overflow-hidden text-sm divide-x divide-gray-300 bg-white">
-      <div className="px-4 py-2">
-        <span className="font-medium text-gray-700">+{usuarios} <br /> usuarios</span>
+    <div className="flex items-center py-2 px-4 font-inter text-purple-700 rounded-full w-fit bg-purple-50 overflow-hidden text-sm divide-x divide-purple-300">
+      <div className="px-4 py-2"style={{fontSize: "12px"}}>
+        <span className="font-bold" style={{fontSize: "20px"}}>+{usuarios}</span> <br /> usuarios
       </div>
-      <div className="px-4 py-2">
-        <span className="font-medium text-gray-700">+{recomiendan} <br /> recomiendan</span>
+      <div className="px-4 py-2"style={{fontSize: "12px"}}>
+        <span className="font-bold" style={{fontSize: "20px"}}>+{recomiendan}</span> <br /> recomiendan
       </div>
       <div className="px-4 py-2 flex items-center space-x-[-8px] pl-4">
-        {avatars.slice(0, 3).map((avatar, index) => (
+        {avatars.map((avatar, index) => (
           <img
             key={index}
             src={avatar}
