@@ -21,7 +21,7 @@ export default function Home() {
         </p>
         <div className="flex space-x-2">
             <button style={{fontSize: '20px'}} 
-            className="px-8 py-3 font-bold cursor-pointer flex items-center gap-2 font-inter rounded-full text-white bg-gradient-to-r opacity-[.72] hover:opacity-100 from-main-400 to-main-300 transition">
+                className="px-8 py-3 font-bold cursor-pointer flex items-center gap-2 font-inter rounded-full text-white bg-gradient-to-r opacity-[.72] hover:opacity-100 from-main-400 to-main-300 transition">
                 <i className="fa-solid fa-rocket" style={{fontSize: '18px'}}></i>
                 Iniciar test
             </button>
@@ -35,7 +35,7 @@ export default function Home() {
             <UsersRecomendations 
                 usuarios={400} 
                 recomiendan={290} 
-                avatars={['logo_header.png', 'logo_header.png', 'logo_header.png']}            
+                avatars={['user1.png', 'user2.png', 'user3.png']}            
             />
         </div>
     </div>
