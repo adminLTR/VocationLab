@@ -35,7 +35,7 @@ export default function TestimoniosPage() {
             ]}/>
         </div>
         <div className="my-10">
-            <h3 className="font-inter mb-4 text-[25px]">Deja tu testimonio</h3>
+            <h3 className="font-inter mb-4 text-[25px] text-[#4c4c4c]">Deja tu testimonio</h3>
             <CommentBox/>
         </div>
     </div>

@@ -33,13 +33,13 @@ export default function CommentBox() {
         <div className="flex justify-end items-center gap-4">
           <button
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-            className={`cursor-pointer text-lg hover:text-main-500 ${showEmojiPicker ? 'text-main-500' : 'text-gray-400'}`}
+            className={`cursor-pointer text-lg hover:text-main-500 transition ${showEmojiPicker ? 'text-main-500' : 'text-gray-400'}`}
           >
             <i className="fa-regular fa-face-smile"></i>
           </button>
           <button
             onClick={handleSend}
-            className="cursor-pointer text-lg text-gray-400 hover:text-main-500"
+            className="cursor-pointer text-lg text-gray-400 hover:text-main-500 transition"
           >
             <i className="fa-solid fa-paper-plane"></i>
           </button>
