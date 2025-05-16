@@ -17,9 +17,14 @@
   --color-main-600: #775CFE;
   --color-main-700: #785DFF;
   --color-main-800: #8269FF;
+  --color-main-900: #8469F8;
   
+  --color-secondary-400: #B863ED;
   --color-secondary-500: #E24EF4;
   --color-secondary-600: #E752DD;
+  --color-secondary-700: #C961E9;
+  --color-secondary-800: #6F549C;
+  
 }
 
 .fullscreen-background {
