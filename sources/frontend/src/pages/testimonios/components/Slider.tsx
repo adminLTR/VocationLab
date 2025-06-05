@@ -1,56 +1,46 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
+import { useEffect, useState } from "react"
 
 interface CardProps {
     profilePhotoUrl: string,
-    comment: string,
+    name: string,
     username: string,
+    comment: string,
 }
-function Card({ profilePhotoUrl, comment, username }: CardProps) {
+function Card({ profilePhotoUrl, name, username, comment }: CardProps) {
   return (
-    <div className="rounded-3xl font-inter text-white py-4 bg-gradient-to-tr from-secondary-700 to-main-900 px-12">
-      <img src={profilePhotoUrl} alt="Usuario" className="block" width={70} />
-      <p className="my-4 text-[25px] line-clamp-3">{comment}</p>
-      <div style={{fontSize: 24}}>
-        <p className="font-bold">{username}</p>
-        <p>Estudiante</p>
+    <div className="rounded-3xl font-inter text-black max-w-[326px] p-4 bg-gradient-to-tr bg-red-50">
+      <img src={profilePhotoUrl} alt="Usuario" className="block m-auto mb-2" width={50} />
+      <div className="text-center">
+        <p className="font-bold text-[18px]">{name}</p>
+        <p className="text-[10px]">{username}</p>
+        <p className="text-[13px] my-4">{comment}</p>
+        <p className="text-[30px] text-[#BDCFE2]">
+          <i className="fa-solid fa-quote-left"></i>
+        </p>
       </div>
     </div>
   );
 }
 
-interface CoverflowSwiperProps {
+interface SliderProps {
     data: CardProps[]
 }
-export default function CoverflowSwiper({data} : CoverflowSwiperProps) {
-  return (
-    <Swiper
-      effect={'coverflow'}
-      grabCursor={true}
-      centeredSlides={true}
-      slidesPerView={'auto'}
-      spaceBetween={80}
-      coverflowEffect={{
-        rotate: 0,
-        stretch: 0,
-        depth: 0,
-        modifier: 2,
-        slideShadows: false,
-      }}
-      modules={[EffectCoverflow, Pagination]}
-      className="mySwiper"
-    >
-      {data.map((element, idx) => (
-        <SwiperSlide key={idx} style={{width: 752}}>
-          <Card 
-          profilePhotoUrl={element.profilePhotoUrl}
-          comment={element.comment}
-          username={element.username}/>
-        </SwiperSlide>
-      ))}
-    </Swiper>
-  );
+export default function Slider({data} : SliderProps) {
+    const [firstData, setFirstData] = useState<CardProps[]>([]);
+    const [secondData, setSecondData] = useState<CardProps[]>([]);
+
+    useEffect(() => {
+      const half = Math.ceil(data.length / 2);
+      setFirstData(data.slice(0, half));
+      setSecondData(data.slice(half));
+    }, [data])
+
+    return <div className="flex gap-4 justify-center flex-nowrap items-center over overflow-hidden bg-red-500">
+        {firstData.map((user)=><Card 
+          username={user.username}
+          profilePhotoUrl={user.profilePhotoUrl}
+          name={user.name}
+          comment={user.comment}
+        />)}
+    </div>
 }
