@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 export default function NosotrosPage() {
 
-    return <div className="bg-red-500">
-        <div className="text-center bg-green-500">
-            <div className="w-fit m-auto bg-amber-900 p-0">
+    return <div>
+        <div className="text-center">
+            <div className="w-fit m-auto p-0">
                 <Title>
                     <span className="text-[60px]">Nuestro </span>
                     <span className="text-transparent text-[60px] bg-clip-text bg-gradient-to-r from-main-500 to-secondary-600">
@@ -14,7 +14,7 @@ export default function NosotrosPage() {
                 </Title>
             </div>
             <p className="text-[#BDCFE2] text-[40px] font-medula">Apasionados. Creativos. Alcohólicos.</p>
-            <div className="bg-amber-500">
+            <div >
                 <div className="bg-red-100 w-fit m-auto py-4 px-10 rounded-xl">
                     <div className="pb-5">
                         <img className="block m-auto mb-2 rounded-full" src="/yo_mejorado.png" alt="" />
