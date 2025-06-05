@@ -44,7 +44,7 @@ export default function NosotrosPage() {
                     </span>
                 </Title>
             </div>
-            <p className="text-[#BDCFE2] text-[40px] font-medula mt-1 mb-4">Apasionados. Creativos. Alcohólicos.</p>
+            <p className="text-[#BDCFE2] text-[40px] font-medula mt-1 mb-4">Apasionados. Creativos. Trabajadores.</p>
             <div className="flex gap-10 justify-center flex-wrap">
                 {data.map((usuario, index) => {
                     return <Card 
