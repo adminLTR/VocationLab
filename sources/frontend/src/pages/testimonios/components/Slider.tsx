@@ -8,7 +8,7 @@ interface CardProps {
 }
 function Card({ profilePhotoUrl, name, username, comment }: CardProps) {
   return (
-    <div className="rounded-3xl font-inter text-black max-w-[326px] p-4 bg-gradient-to-tr bg-red-50">
+    <div className="rounded-3xl font-inter text-black max-w-[326px] p-4 bg-gradient-to-tr bg-red-100">
       <img src={profilePhotoUrl} alt="Usuario" className="block m-auto mb-2" width={50} />
       <div className="text-center">
         <p className="font-bold text-[18px]">{name}</p>
@@ -35,12 +35,35 @@ export default function Slider({data} : SliderProps) {
       setSecondData(data.slice(half));
     }, [data])
 
-    return <div className="flex gap-4 justify-center flex-nowrap items-center over overflow-hidden bg-red-500">
-        {firstData.map((user)=><Card 
-          username={user.username}
-          profilePhotoUrl={user.profilePhotoUrl}
-          name={user.name}
-          comment={user.comment}
-        />)}
-    </div>
+    return (
+      <div className="overflow-x-scroll no-scrollbar">
+        <div className="flex gap-4 py-2 justify-center items-center flex-nowrap">
+          {firstData.map((user) => (
+            <div className="shrink-0">
+              <Card
+                key={user.username}
+                username={user.username}
+                profilePhotoUrl={user.profilePhotoUrl}
+                name={user.name}
+                comment={user.comment}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-4 py-2 justify-center items-center flex-nowrap">
+          {secondData.map((user) => (
+            <div className="shrink-0">
+              <Card
+                key={user.username}
+                username={user.username}
+                profilePhotoUrl={user.profilePhotoUrl}
+                name={user.name}
+                comment={user.comment}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+
 }
