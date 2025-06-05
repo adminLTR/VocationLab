@@ -16,17 +16,11 @@ export default function TestimoniosPage() {
                 </p>
             </Title>
         </div>
-        <p className="text-center">
+        <p className="text-center mb-8">
             Nuestra mision es brindar una herramienta efectiva y una experiencia satisfactoria a nuestros usuarios
         </p>
         <Slider
         data={[
-            {
-                profilePhotoUrl: "user1.png",
-                name: "Luis La Torre",
-                username: "tinyleopard720",
-                comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-            },
             {
                 profilePhotoUrl: "user2.png",
                 name: "Asthri Pardave",

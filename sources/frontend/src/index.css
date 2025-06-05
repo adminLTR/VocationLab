@@ -38,3 +38,12 @@
   background-position: center;
   z-index: -1;
 }
+
+/* En tu archivo global.css */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
