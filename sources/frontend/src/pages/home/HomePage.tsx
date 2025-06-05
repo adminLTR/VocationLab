@@ -3,7 +3,6 @@ import Title from "../../components/Title";
 
 export default function HomePage() {
 
-
     return <div className="home-page my-20">
         <div className="fullscreen-background"></div>
         <Title>
