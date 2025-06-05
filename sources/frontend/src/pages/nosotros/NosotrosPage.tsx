@@ -26,12 +26,12 @@ export default function NosotrosPage() {
         {
             profilePhotoUrl:"/yo_mejorado.png",
             name:"Giacomo Madrid",
-            position:"Word Senior"
+            position:"Javer Senior"
         },
         {
             profilePhotoUrl:"/yo_mejorado.png",
             name:"Laura Mendoza",
-            position:"Word Senior"
+            position:"n8n Senior"
         },
     ]
     return <div>
@@ -45,7 +45,7 @@ export default function NosotrosPage() {
                 </Title>
             </div>
             <p className="text-[#BDCFE2] text-[40px] font-medula mt-1 mb-4">Apasionados. Creativos. Alcohólicos.</p>
-            <div className="flex gap-10 justify-center flex-wrap">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 gap-y-6 justify-items-center w-fit m-auto my-6">
                 {data.map((usuario, index) => {
                     return <Card 
                         {...usuario}
@@ -53,8 +53,8 @@ export default function NosotrosPage() {
                     />
                 })}
             </div>
-            <div className="font-inter font-medium text-[18px] text-[#92A1B0]">
-                <p>VocationLab nació al reflexionar sobre el proceso de preparación preuniversitaria que siguió cada integrante de nuestro equipo. Nos dimos cuenta que al escoger una carrera universitaria, no se cuenta con una herramienta que cuente con la efectividad del servicio de un profesional en guía vocacional, en un entorno digital y de forma gratuita. </p>
+            <div className="font-inter font-medium text-[18px] text-[#92A1B0] w-[775px] m-auto mt-5">
+                <p className="py-5">VocationLab nació al reflexionar sobre el proceso de preparación preuniversitaria que siguió cada integrante de nuestro equipo. Nos dimos cuenta que al escoger una carrera universitaria, no se cuenta con una herramienta que cuente con la efectividad del servicio de un profesional en guía vocacional, en un entorno digital y de forma gratuita. </p>
                 <p>Este proyecto es de código abierto, por lo que contamos con las sugerencias provenientes de la comunidad académica para brindar una mayor efectividad en nuestro test.</p>
             </div>
         </div>
