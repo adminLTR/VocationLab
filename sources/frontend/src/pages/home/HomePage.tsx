@@ -6,8 +6,8 @@ export default function HomePage() {
     return <div className="home-page my-20">
         <div className="fullscreen-background"></div>
         <Title>
-            <span>Transformamos la</span><br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-main-500 to-secondary-600">
+            <span className="text-[128px]">Transformamos la</span><br />
+            <span className="text-transparent text-[128px] bg-clip-text bg-gradient-to-r from-main-500 to-secondary-600">
                 orientación vocacional
             </span>
         </Title>
