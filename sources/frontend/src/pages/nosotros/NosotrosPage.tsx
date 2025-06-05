@@ -15,7 +15,7 @@ export default function NosotrosPage() {
             </div>
             <p className="text-[#BDCFE2] text-[40px] font-medula">Apasionados. Creativos. Alcohólicos.</p>
             <div >
-                <div className="bg-red-100 w-fit m-auto py-4 px-10 rounded-xl">
+                <div className="bg-red-100 w-fit m-auto py-4 px-10 rounded-3xl">
                     <div className="pb-5">
                         <img className="block m-auto mb-2 rounded-full" src="/yo_mejorado.png" alt="" />
                         <p className="font-inter text-[18px] font-semibold">Hugo Álvarez</p>
