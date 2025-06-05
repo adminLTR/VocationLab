@@ -9,27 +9,27 @@ export default function NosotrosPage() {
             position:"Word Senior"
         },
         {
-            profilePhotoUrl:"/yo_mejorado.png",
+            profilePhotoUrl:"/ever.png",
             name:"Ever Avedaño",
             position:"Figma Senior"
         },
         {
-            profilePhotoUrl:"/yo_mejorado.png",
+            profilePhotoUrl:"/luis.png",
             name:"Luis La Torre",
             position:"JS Senior"
         },
         {
-            profilePhotoUrl:"/yo_mejorado.png",
+            profilePhotoUrl:"/bruno.png",
             name:"Bruno Chochoca",
             position:"Word Senior"
         },
         {
-            profilePhotoUrl:"/yo_mejorado.png",
+            profilePhotoUrl:"/giacomo.png",
             name:"Giacomo Madrid",
             position:"Javer Senior"
         },
         {
-            profilePhotoUrl:"/yo_mejorado.png",
+            profilePhotoUrl:"/laura.png",
             name:"Laura Mendoza",
             position:"n8n Senior"
         },
