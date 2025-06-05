@@ -15,7 +15,7 @@ interface CardProps {
 }
 function Card({ profilePhotoUrl, name, username, comment }: CardProps) {
   return (
-    <div className="rounded-3xl font-inter text-black w-[326px] p-4 bg-gradient-to-tr bg-red-100">
+    <div className="rounded-3xl font-inter text-black w-[326px] z-10 p-4 hover:-rotate-z-12 transition-all hover:shadow-lg hover:shadow-purple-500">
       <img src={profilePhotoUrl} alt="Usuario" className="block m-auto mb-2" width={50} />
       <div className="text-center">
         <p className="font-bold text-[18px]">{name}</p>
@@ -47,9 +47,9 @@ export default function Slider({ data }: SliderProps) {
     spaceBetween: 20,
     loop: true,
     // freeMode: true,
-    speed: 3000,
+    speed: 6000,
     autoplay: {
-      delay: 1,
+      delay: 1000,
       disableOnInteraction: false,
       pauseOnMouseEnter: false,
     },
@@ -62,9 +62,9 @@ export default function Slider({ data }: SliderProps) {
   return (
     <div className="overflow-hidden">
       {/* Primera fila */}
-      <Swiper {...swiperSettings}>
+      <Swiper {...swiperSettings} className="py-5">
         {firstData.map((user, index) => (
-          <SwiperSlide key={index} className="!w-[326px]">
+          <SwiperSlide key={index} className="!w-[326px] py-6">
             <Card {...user} />
           </SwiperSlide>
         ))}

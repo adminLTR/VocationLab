@@ -2,6 +2,7 @@ import Title from "../../components/Title"
 import Slider from "./components/Slider"
 
 export default function TestimoniosPage() {
+    
     return <div>
         <div className="w-fit m-auto">
             <Title>

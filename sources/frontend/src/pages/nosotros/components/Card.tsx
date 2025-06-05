@@ -7,7 +7,7 @@ interface CardProbs {
 }
 
 export default function Card({profilePhotoUrl, name, position}: CardProbs){
-    return <div className="bg-red-50 w-[200px] h-[210px] py-4 px-1 rounded-4xl">
+    return <div className="w-[200px] h-[210px] py-4 px-1 rounded-4xl">
         <div className="pb-5">
             <img className="block m-auto mb-2 rounded-full" src={profilePhotoUrl} alt="" />
             <p className="font-inter text-[18px] font-semibold">{name}</p>
