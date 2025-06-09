@@ -23,10 +23,10 @@ export default function SocialMediaLinks({setShowModal}:SocialMediaLinksProps) {
             Login / Register
         </Button>
         <div className="flex gap-2 items-center">
-            <Link to="#" style={{fontSize: '20px'}}>
+            <Link to="#" className="text-[20px] bg-white px-2 py-1 rounded-lg">
                 <i className="fa-brands fa-github"></i>
             </Link>
-            <Link to="#" style={{fontSize: '20px'}}>
+            <Link to="#" className="text-[20px] bg-white px-2 py-1 rounded-lg">
                 <i className="fa-brands fa-x-twitter"></i>
             </Link>
         </div>
