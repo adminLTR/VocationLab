@@ -15,7 +15,7 @@ function NavLink({children, to, active=false} : NavLinkProps) {
 export default function Navbar() {
     const location = useLocation();
 
-    return <nav className="flex justify-center space-x-4 pt-1 px-3 rounded-3xl mt-2 md:mt-0">
+    return <nav className="flex justify-center space-x-4 pt-1 px-6 rounded-3xl mt-2 md:mt-0 bg-white">
         <NavLink to="/" active={location.pathname === '/'}>
             Inicio
         </NavLink>
