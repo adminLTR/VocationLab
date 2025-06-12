@@ -7,8 +7,7 @@ interface ButtonProps {
 }
 function Button({children, onClick = ()=>{}} : ButtonProps) {
     return <button onClick={onClick}
-    className="text-center rounded-3xl bg-black text-white px-4 py-2 font-bold cursor-pointer hover:bg-gray-800" 
-    style={{fontSize: '14px'}}>
+    className="text-center rounded-3xl bg-black text-white px-4 py-2 font-bold cursor-pointer hover:bg-gray-800 text-[14px]">
         {children}
     </button>
 }
@@ -23,10 +22,10 @@ export default function SocialMediaLinks({setShowModal}:SocialMediaLinksProps) {
             Login / Register
         </Button>
         <div className="flex gap-2 items-center">
-            <Link to="#" className="text-[20px] bg-white px-2 py-1 rounded-lg">
+            <Link to="#" className="text-[20px] bg-white px-2 py-1 rounded-lg hover:bg-gray-50 transition-all">
                 <i className="fa-brands fa-github"></i>
             </Link>
-            <Link to="#" className="text-[20px] bg-white px-2 py-1 rounded-lg">
+            <Link to="#" className="text-[20px] bg-white px-2 py-1 rounded-lg hover:bg-gray-50 transition-all">
                 <i className="fa-brands fa-x-twitter"></i>
             </Link>
         </div>
