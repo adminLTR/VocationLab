@@ -15,7 +15,7 @@ interface CardProps {
 }
 function Card({ profilePhotoUrl, name, username, comment }: CardProps) {
   return (
-    <div className="rounded-3xl font-inter text-black w-[326px] z-10 p-4 hover:-rotate-z-12 transition-all hover:shadow-lg hover:shadow-purple-500">
+    <div className="rounded-3xl font-inter text-black w-[326px] z-10 p-4 hover:-rotate-z-12 transition-all hover:shadow-lg hover:shadow-purple-500 cursor-pointer">
       <img src={profilePhotoUrl} alt="Usuario" className="block m-auto mb-2" width={50} />
       <div className="text-center">
         <p className="font-bold text-[18px]">{name}</p>
