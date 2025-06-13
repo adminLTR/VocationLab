@@ -26,7 +26,7 @@ export default function Header({setShowModal} : HeaderProps) {
           <Logo/>
         </div>
         <div className={`flex-wrap items-center justify-between lg:w-full absolute bg-white 
-          right-0 top-10 
+          right-0 top-10 z-10
           ${showMenu?'block':'hidden'} lg:flex lg:static lg:bg-transparent rounded-4xl`}>
           <div className="hidden lg:block">
             <Logo/>
