@@ -1,4 +1,3 @@
-import Title from "../../components/Title";
 import Card from "./components/Card";
 
 export default function NosotrosPage() {
@@ -34,16 +33,14 @@ export default function NosotrosPage() {
             position:"n8n Senior"
         },
     ]
-    return <div>
-        <div className="text-center">
-            <div className="w-fit m-auto py-2">
-                <Title>
-                    <span className="text-[60px]">Nuestro </span>
-                    <span className="text-transparent text-[60px] bg-clip-text bg-gradient-to-r from-main-500 to-secondary-600">
-                        equipo
-                    </span>
-                </Title>
-            </div>
+    return <div className="h-full">
+        <div className="text-center py-5 w-full md:w-10/12 mx-auto flex flex-col h-full">
+            <h1 className="font-sf font-semibold leading-[0.8] text-center
+            text-[30px] md:text-[40px] lg:text-[60px]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A629FF] to-[#1DD1CB]">
+                    Nuestro
+                </span> equipo
+            </h1>
             <p className="text-[#BDCFE2] text-[40px] font-medula mt-1 mb-4">Apasionados. Creativos. Trabajadores.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 gap-y-6 justify-items-center w-fit m-auto my-6">
                 {data.map((usuario, index) => {
@@ -53,7 +50,7 @@ export default function NosotrosPage() {
                     />
                 })}
             </div>
-            <div className="font-inter font-medium text-[18px] text-[#92A1B0] w-[775px] m-auto mt-5">
+            <div className="font-inter font-medium text-[18px] text-[#92A1B0] max-w-[775px] m-auto my-10">
                 <p className="py-5">VocationLab nació al reflexionar sobre el proceso de preparación preuniversitaria que siguió cada integrante de nuestro equipo. Nos dimos cuenta que al escoger una carrera universitaria, no se cuenta con una herramienta que cuente con la efectividad del servicio de un profesional en guía vocacional, en un entorno digital y de forma gratuita. </p>
                 <p>Este proyecto es de código abierto, por lo que contamos con las sugerencias provenientes de la comunidad académica para brindar una mayor efectividad en nuestro test.</p>
             </div>
