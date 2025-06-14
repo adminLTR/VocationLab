@@ -8,9 +8,9 @@ export default function Layout() {
     const [showModal, setShowModal] = useState(false);
 
     return (
-        <div>
+        <div className="flex flex-col h-full">
             <Header setShowModal={setShowModal}/>
-            <main className="">
+            <main className="grow">
                 <Outlet/>
             </main>
             {showModal && <ModalLogin setShowModal={setShowModal}/>}
