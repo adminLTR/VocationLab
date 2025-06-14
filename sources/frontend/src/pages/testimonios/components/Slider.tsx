@@ -15,7 +15,7 @@ interface CardProps {
 }
 function Card({ profilePhotoUrl, name, username, comment }: CardProps) {
   return (
-    <div className="rounded-3xl font-inter text-black w-[326px] z-10 p-4 hover:-rotate-z-12 transition-all hover:shadow-lg hover:shadow-purple-500 cursor-pointer">
+    <div className="rounded-3xl font-inter text-black w-[326px] z-10 p-4 hover:-rotate-z-12 transition-all hover:shadow-[0_0_10px_5px_#A086FF] hover:shadow-[#A086FF] cursor-pointer">
       <img src={profilePhotoUrl} alt="Usuario" className="block m-auto mb-2" width={50} />
       <div className="text-center">
         <p className="font-bold text-[18px]">{name}</p>
@@ -62,9 +62,9 @@ export default function Slider({ data }: SliderProps) {
   return (
     <div className="overflow-hidden">
       {/* Primera fila */}
-      <Swiper {...swiperSettings} className="py-5">
+      <Swiper {...swiperSettings}>
         {firstData.map((user, index) => (
-          <SwiperSlide key={index} className="!w-[326px] py-6">
+          <SwiperSlide key={index} className="!w-[326px] py-8">
             <Card {...user} />
           </SwiperSlide>
         ))}
@@ -73,7 +73,7 @@ export default function Slider({ data }: SliderProps) {
       {/* Segunda fila (intercalada visualmente) */}
       <Swiper {...swiperSettings}  className="mySwiper">
         {secondData.map((user, index) => (
-          <SwiperSlide key={index} className="!w-[326px] translate-x-[100px] my-4">
+          <SwiperSlide key={index} className="!w-[326px] translate-x-[100px] py-8">
             <Card {...user} />
           </SwiperSlide>
         ))}
