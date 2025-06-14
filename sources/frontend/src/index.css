@@ -163,17 +163,12 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-.fullscreen-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-image: url("bg_home.png");
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
+@media (max-width: 500px) {
+  .home-page {
+    background-image: url('bg_home_mobile.png');
+    background-position:bottom;
+    background-size: contain;
+  }
 }
 
 /* En tu archivo global.css */

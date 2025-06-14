@@ -3,8 +3,8 @@ import UsersRecomendations from "./components/UsersRecomendations";
 export default function HomePage() {
 
     return <div className="home-page h-full">
-        <div className="py-20 w-full md:w-10/12 mx-auto flex flex-col h-full">
-            {/* <div className="fullscreen-background"></div> */}
+        <div className="py-10 md:py-20 w-full md:w-10/12 mx-auto flex flex-col h-full">
+            {/* <div className="fullscreen-background bg-red-200"></div> */}
             <h1 className="font-sf font-semibold leading-[0.8] w-fit md:m-0 m-auto text-center md:text-start
             text-[40px] md:text-[60px] lg:text-[80px]">
                 <span className="">Transformamos la</span><br />
