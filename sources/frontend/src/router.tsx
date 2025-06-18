@@ -4,6 +4,7 @@ import Layout from "./pages/layout/Layout";
 import HomePage from "./pages/home/HomePage";
 import TestimoniosPage from "./pages/testimonios/TestimoniosPage";
 import NosotrosPage from "./pages/nosotros/NosotrosPage";
+import LayoutResources from "./pages/layout-resources/LayoutResources";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,17 @@ const router = createBrowserRouter([
             {
                 path: '/nosotros',
                 element: <NosotrosPage/>
+            }
+        ]
+    },
+    {
+        path: '/lab',
+        element: <LayoutResources/>,
+        children: [
+            {
+                index: true,
+                element: <h1>CHAT</h1>
+                
             }
         ]
     }
