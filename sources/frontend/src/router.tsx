@@ -4,7 +4,8 @@ import Layout from "./pages/layout/Layout";
 import HomePage from "./pages/home/HomePage";
 import TestimoniosPage from "./pages/testimonios/TestimoniosPage";
 import NosotrosPage from "./pages/nosotros/NosotrosPage";
-import LayoutResources from "./pages/layout-resources/LayoutResources";
+import LayoutLab from "./pages/layout-lab/LayoutLab";
+import ChatPage from "./pages/chat/ChatPage"
 
 const router = createBrowserRouter([
     {
@@ -27,11 +28,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/lab',
-        element: <LayoutResources/>,
+        element: <LayoutLab/>,
         children: [
             {
                 index: true,
-                element: <h1>CHAT</h1>
+                element: <ChatPage/>
                 
             }
         ]
