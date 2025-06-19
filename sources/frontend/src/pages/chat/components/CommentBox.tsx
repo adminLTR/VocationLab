@@ -2,6 +2,9 @@
 import { useState } from 'react';
 import Picker from '@emoji-mart/react';
 import data from '@emoji-mart/data';
+import { 
+  chatApi
+} from '../../../services/api';
 
 export default function CommentBox() {
   const [comment, setComment] = useState('');
@@ -12,9 +15,13 @@ export default function CommentBox() {
 
   };
 
-  const handleSend = () => {
-    if (comment.trim()) {
-      console.log('Comentario enviado:', comment);
+  const handleSend = async () => {
+    const user_message = comment.trim();
+    if (user_message) {
+
+      const data = await (await chatApi({user_message})).data;
+      console.log(data)
+      
       setShowEmojiPicker(false)
       setComment('');
     }
