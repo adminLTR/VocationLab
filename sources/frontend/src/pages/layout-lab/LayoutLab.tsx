@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 
-export default function LayoutResources() {
+export default function LayoutLab() {
 
 
     return (
