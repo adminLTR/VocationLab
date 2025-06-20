@@ -25,16 +25,17 @@ export default function CommentBox({chatMessages, setChatMessages} : CommentBoxP
 
   const handleSend = async () => {
     const user_message = comment.trim();
+    setShowEmojiPicker(false)
+    setComment('');
     if (user_message) {
 
-      setChatMessages([...chatMessages, {message:user_message, user:true}])
+      setChatMessages(prev => [...prev, { message: user_message, user: true }]);
 
-      const data = await (await chatApi({user_message})).data;
+      const response = await chatApi({ user_message });
+      const botMessage = response.data.message;
+
+      setChatMessages(prev => [...prev, { message: botMessage, user: false }]);
       
-      setChatMessages([...chatMessages, {message:data.message, user:false}])
-      
-      setShowEmojiPicker(false)
-      setComment('');
     }
   };
 
