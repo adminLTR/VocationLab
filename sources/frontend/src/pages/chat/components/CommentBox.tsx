@@ -6,7 +6,15 @@ import {
   chatApi
 } from '../../../services/api';
 
-export default function CommentBox() {
+interface MessageProps {
+  message: string,
+  user: boolean
+}
+interface CommentBoxProps {
+  chatMessages: MessageProps[]
+  setChatMessages: React.Dispatch<React.SetStateAction<MessageProps[]>>
+}
+export default function CommentBox({chatMessages, setChatMessages} : CommentBoxProps) {
   const [comment, setComment] = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
@@ -19,8 +27,11 @@ export default function CommentBox() {
     const user_message = comment.trim();
     if (user_message) {
 
+      setChatMessages([...chatMessages, {message:user_message, user:true}])
+
       const data = await (await chatApi({user_message})).data;
-      console.log(data)
+      
+      setChatMessages([...chatMessages, {message:data.message, user:false}])
       
       setShowEmojiPicker(false)
       setComment('');
