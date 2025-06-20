@@ -140,3 +140,26 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS=[
     'http://localhost:5173'
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title" : "VocationLab Admin",
+    "site_header": "VocationLab",
+    "site_brand": "VocationLab",
+    "welcome_sign": "Welcome to the VocationLab",
+    "copyright": "VocationLab - Grupo 2 UX/UI",
+    "icons": {
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+
+        "chat.Message" : "fas fa-message",
+
+        "institutions.Career" : "fas fa-graduation-cap",
+        "institutions.Institution" : "fas fa-building-columns",
+        "institutions.Area" : "fas fa-helmet-safety",
+        
+        "location.City" : "fas fa-city",
+        "location.Address" : "fas fa-location-dot",
+        "location.District" : "fas fa-tree-city",
+        "location.Region" : "fas fa-map-location-dot",
+    },
+}
