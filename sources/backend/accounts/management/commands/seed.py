@@ -11,6 +11,7 @@ class Command(BaseCommand):
     help = 'Seed initial data, including admin user'
 
     def handle(self, *args, **kwargs):
+        # os.remove("chroma")
         User.objects.all().delete()
 
         self.create_users()
