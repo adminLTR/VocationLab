@@ -29,10 +29,18 @@ class Career(models.Model):
 class Institution(models.Model):
     UNIVERSITY = 'university'
     INSTITUTE = 'institute'
+    
+    PUBLIC = 'public'
+    PRIVATE = 'private'
 
     INSTITUTION_TYPE_CHOICES = [
         (UNIVERSITY, 'Universidad'),
         (INSTITUTE, 'Instituto'),
+    ]
+    
+    MANAGEMENT_TYPE_CHOICES = [
+        (PUBLIC, 'Publica'),
+        (PRIVATE, 'Privada'),
     ]
 
     name = models.CharField(max_length=100, verbose_name="Nombre")
@@ -47,6 +55,12 @@ class Institution(models.Model):
         choices=INSTITUTION_TYPE_CHOICES,
         default=UNIVERSITY,
         verbose_name="Tipo de institución"
+    )
+    management_type = models.CharField(
+        max_length=20,
+        choices=MANAGEMENT_TYPE_CHOICES,
+        null=True,
+        verbose_name="Tipo de gestión"
     )
 
     def __str__(self):
