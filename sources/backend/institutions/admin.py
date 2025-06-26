@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import *
+from import_export.admin import ImportExportModelAdmin
+from .resources import InstitutionResource
 
 # Register your models here.
 @admin.register(Area)
@@ -14,7 +16,8 @@ class CareerAdmin(admin.ModelAdmin):
     list_filter = ('area',)
 
 @admin.register(Institution)
-class InstitutionAdmin(admin.ModelAdmin):
+class InstitutionAdmin(ImportExportModelAdmin):
+    resource_class = InstitutionResource
     list_display = ('id', 'name', 'short_name', 'institution_type', 'get_address', 'get_careers_count')
     list_filter = ('institution_type', 'careers', 'address')
     search_fields = ('name', 'short_name', 'description', 'address__address')
