@@ -14,7 +14,7 @@ class Area(models.Model):
         verbose_name_plural = "Áreas"
 
 class Career(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Nombre")
+    name = models.CharField(max_length=500, verbose_name="Nombre")
     description = models.TextField(verbose_name="Descripción", null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to='careers')
     area = models.ForeignKey(Area, on_delete=models.PROTECT, null=True)
