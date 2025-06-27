@@ -16,7 +16,7 @@ class City(models.Model):
     region = models.ForeignKey(Region, on_delete=models.CASCADE, verbose_name="Región")
 
     def __str__(self):
-        return f"{self.region.name}/{self.name}"
+        return f"{self.region.name}, {self.name}"
 
     class Meta:
         verbose_name = "Ciudad"
@@ -27,7 +27,7 @@ class District(models.Model):
     city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name="Ciudad")
 
     def __str__(self):
-        return f"{self.city}/{self.name}"
+        return f"{self.city}, {self.name}"
 
     class Meta:
         verbose_name = "Distrito"
