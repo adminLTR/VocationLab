@@ -43,21 +43,21 @@ class Command(BaseCommand):
         collection = chroma_client.get_or_create_collection(name="VocationLab")
 
         saludos = [
-            "¡Hola! ¿En qué puedo ayudarte hoy?",
-            "¡Buenos días! ¿Cómo te puedo ayudar?",
-            "¡Hola! 😊 ¿Qué necesitas?",
-            "¡Buenas tardes! Estoy aquí para ayudarte.",
-            "¡Qué gusto saludarte! ¿En qué te puedo asistir?",
-            "¡Hola, hola! ¿Cómo estás?",
-            "¡Bienvenido! ¿En qué te puedo colaborar?",
-            "¡Hola! ¿Tienes alguna pregunta?",
-            "¡Un gusto saludarte! ¿Qué deseas consultar?",
-            "¡Hola! Estoy listo para ayudarte.",
-            "¡Encantado de hablar contigo! ¿Cómo puedo ayudarte?",
-            "¡Hola humano! 😄 ¿En qué te puedo servir hoy?",
-            "¡Buenas! ¿Sobre qué tema quieres conversar?",
-            "¡Hola! Dime, ¿cómo te puedo ayudar?",
-            "¡Hola! Soy tu asistente, pregúntame lo que necesites.",
+            "¡Hola! Soy IvAn, tu asistente virtual. 😊 ¿Cuál es tu nombre?",
+            "¡Hola! Soy IvAn. Para ayudarte mejor, cuéntame cómo te llamas y qué estás estudiando.",
+            "¡Buenos días! Soy IvAn. ¿Puedes contarme un poco sobre ti? Tu nombre, dónde estudias o trabajas, etc.",
+            "¡Hola humano! 😄 Me llamo IvAn. ¿Cuál es tu nombre y qué carrera estás considerando?",
+            "¡Un gusto conocerte! Soy IvAn, tu guía vocacional. ¿Cómo te llamas y qué te interesa estudiar?",
+            "¡Hola! Soy IvAn. ¿Dónde estás estudiando o planeas estudiar? ¿Y cuál es tu nombre?",
+            "¡Bienvenido a VocationLab! Soy IvAn. Antes de empezar, dime tu nombre y qué temas te interesan.",
+            "¡Encantado de conocerte! Soy IvAn. ¿Podrías contarme dónde vives y qué carrera te llama la atención?",
+            "¡Hola, hola! Soy IvAn. 😊 Para comenzar, dime cómo te llamas y qué te apasiona.",
+            "¡Qué alegría saludarte! Soy IvAn, tu asistente. ¿Cuál es tu nombre y en qué etapa de tu formación estás?",
+            "¡Hola! Me llamo IvAn. ¿Puedes contarme un poco sobre ti? Por ejemplo, tu colegio, universidad o intereses.",
+            "¡Hola! Soy IvAn. Cuéntame tu nombre, edad y qué carrera tienes en mente, si ya lo sabes.",
+            "¡Buenas! Soy IvAn, tu orientador virtual. ¿Cómo te llamas y qué te gustaría lograr en tu futuro profesional?",
+            "¡Hola! 😊 Soy IvAn. Me encantaría conocerte mejor. ¿Cuál es tu nombre y qué estudias o quisieras estudiar?",
+            "¡Bienvenido! Soy IvAn. ¿Podrías decirme tu nombre y qué esperas obtener de esta conversación?"
         ]
 
         collection.add(
