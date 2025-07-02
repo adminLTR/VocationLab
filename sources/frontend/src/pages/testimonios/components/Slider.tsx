@@ -2,20 +2,21 @@ import { useEffect, useState } from "react"
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { Autoplay, FreeMode } from "swiper/modules";
+import blurSvg from "../../../assets/blur-swipper.svg"
 
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 interface CardProps {
-    profilePhotoUrl: string,
-    name: string,
-    username: string,
-    comment: string,
+  profilePhotoUrl: string,
+  name: string,
+  username: string,
+  comment: string,
 }
 function Card({ profilePhotoUrl, name, username, comment }: CardProps) {
   return (
-    <div className="rounded-3xl font-inter text-black w-[326px] z-10 p-4 hover:-rotate-z-12 transition-all hover:shadow-[0_0_10px_5px_#A086FF] hover:shadow-[#A086FF] cursor-pointer">
+    <div className="rounded-3xl bg-white font-inter text-black w-full z-10 p-4 hover:-rotate-z-12 transition-all hover:shadow-[0_0_10px_5px_#A086FF] hover:shadow-[#A086FF] cursor-pointer">
       <img src={profilePhotoUrl} alt="Usuario" className="block m-auto mb-2" width={50} />
       <div className="text-center">
         <p className="font-bold text-[18px]">{name}</p>
@@ -30,7 +31,7 @@ function Card({ profilePhotoUrl, name, username, comment }: CardProps) {
 }
 
 interface SliderProps {
-    data: CardProps[]
+  data: CardProps[]
 }
 export default function Slider({ data }: SliderProps) {
   const [firstData, setFirstData] = useState<CardProps[]>([]);
@@ -61,6 +62,11 @@ export default function Slider({ data }: SliderProps) {
 
   return (
     <div className="overflow-hidden">
+      <img
+        src={blurSvg}
+        alt="bg"
+        className="absolute z-50 pointer-events-none w-full h-auto absolute top-0 left-0 -z-10"
+      />
       {/* Primera fila */}
       <Swiper {...swiperSettings}>
         {firstData.map((user, index) => (
@@ -71,7 +77,7 @@ export default function Slider({ data }: SliderProps) {
       </Swiper>
 
       {/* Segunda fila (intercalada visualmente) */}
-      <Swiper {...swiperSettings}  className="mySwiper">
+      <Swiper {...swiperSettings} className="mySwiper">
         {secondData.map((user, index) => (
           <SwiperSlide key={index} className="!w-[326px] translate-x-[100px] py-8">
             <Card {...user} />
