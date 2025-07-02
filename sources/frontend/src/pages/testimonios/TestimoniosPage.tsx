@@ -9,7 +9,7 @@ export default function TestimoniosPage() {
         alt="bg"
         className="w-full h-auto absolute top-0 left-0 -z-10"
     />
-        <div className="py-10 w-full md:w-10/12 mx-auto flex flex-col h-full">
+        <div className="py-10 w-full  mx-auto flex flex-col h-full">
             <h1 className="font-sf font-semibold leading-[0.8] text-center
             text-[30px] md:text-[40px] lg:text-[60px]">
                 <span className="">
