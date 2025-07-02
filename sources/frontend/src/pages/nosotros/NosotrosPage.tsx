@@ -4,49 +4,54 @@ import bgSvg from '../../assets/bg-svg/bg-about.svg';
 export default function NosotrosPage() {
     const data = [
         {
-            profilePhotoUrl:"/yo_mejorado.png",
-            name:"Hugo Alvarez",
-            position:"Word Senior"
+            profilePhotoUrl: "/yo_mejorado.png",
+            name: "Hugo Alvarez",
+            position: "Word Senior"
         },
         {
-            profilePhotoUrl:"/ever.png",
-            name:"Ever Avedaño",
-            position:"Figma Senior"
+            profilePhotoUrl: "/ever.png",
+            name: "Ever Avedaño",
+            position: "Figma Senior"
         },
         {
-            profilePhotoUrl:"/luis.png",
-            name:"Luis La Torre",
-            position:"JS Senior"
+            profilePhotoUrl: "/luis.png",
+            name: "Luis La Torre",
+            position: "JS Senior"
         },
         {
-            profilePhotoUrl:"/bruno.png",
-            name:"Bruno Chochoca",
-            position:"Word Senior"
+            profilePhotoUrl: "/bruno.png",
+            name: "Bruno Chochoca",
+            position: "Word Senior"
         },
         {
-            profilePhotoUrl:"/giacomo.png",
-            name:"Giacomo Madrid",
-            position:"Javer Senior"
+            profilePhotoUrl: "/giacomo.png",
+            name: "Giacomo Madrid",
+            position: "Javer Senior"
         },
         {
-            profilePhotoUrl:"/laura.png",
-            name:"Laura Mendoza",
-            position:"n8n Senior"
+            profilePhotoUrl: "/laura.png",
+            name: "Laura Mendoza",
+            position: "n8n Senior"
         },
     ]
-    return <div className="relative h-full bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${bgSvg})` }}>
+    return <div className="relative w-full">
+        <img
+            src={bgSvg}
+            alt="bg"
+            className="w-full h-auto absolute top-0 left-0 -z-10"
+        />
         <div className="text-center py-5 w-full md:w-10/12 mx-auto flex flex-col h-full">
             <h1 className="font-sf font-semibold leading-[0.8] text-center
             text-[30px] md:text-[40px] lg:text-[60px]">
                 Nuestro
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#A629FF] to-[#1DD1CB]">
-                &nbsp;equipo
+                    &nbsp;equipo
                 </span>
             </h1>
             <p className="text-[#BDCFE2] text-[20px] md:text-[30px] lg:text-[40px] font-sf font-ligth mt-1 mb-4">Apasionados. Creativos. Trabajadores.</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 gap-y-6 justify-items-center w-fit m-auto my-6">
                 {data.map((usuario, index) => {
-                    return <Card 
+                    return <Card
                         {...usuario}
                         key={index}
                     />
