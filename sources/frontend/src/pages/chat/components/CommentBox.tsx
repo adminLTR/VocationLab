@@ -14,20 +14,33 @@ interface Props {
 export default function CommentBox({ chatHistory, setChatHistory }: Props) {
   const [comment, setComment] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const addEmoji = (emoji: any) => {
     setComment((prev) => prev + emoji.native);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   const handleSend = async () => {
     const userMessage = comment.trim();
-    if (!userMessage) return;
+    if (!userMessage || isLoading) return;
 
     setComment("");
     setShowEmojiPicker(false);
+    setIsLoading(true);
 
     const updatedHistory = [...chatHistory, { role: "user", content: userMessage } as const];
     setChatHistory(updatedHistory);
+
+    // Add loading message for bot
+    const historyWithLoading = [...updatedHistory, { role: "assistant", content: "", isLoading: true } as const];
+    setChatHistory(historyWithLoading);
 
     try {
       const response = await chatApi({
@@ -44,6 +57,10 @@ export default function CommentBox({ chatHistory, setChatHistory }: Props) {
       setChatHistory(newHistory);
     } catch (err) {
       console.error("Error al obtener respuesta del bot", err);
+      // Remove loading message on error
+      setChatHistory(updatedHistory);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -52,10 +69,12 @@ export default function CommentBox({ chatHistory, setChatHistory }: Props) {
       <div className="bg-[#8379F5] rounded-4xl text-white p-4 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
         <textarea
           rows={2}
-          className="w-full resize-none outline-none placeholder:text-gray-200 text-white"
+          className="w-full resize-none outline-none placeholder:text-gray-200 text-white bg-transparent"
           placeholder="Dile hola a IvAn..."
           value={comment}
           onChange={(e) => setComment(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={isLoading}
         />
         <div className="flex justify-end items-center gap-4">
           <button
