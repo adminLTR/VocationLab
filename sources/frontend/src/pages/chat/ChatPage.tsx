@@ -1,8 +1,16 @@
 import { useLoaderData } from "react-router-dom";
 import CommentBox from "./components/CommentBox";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserMessage from "./components/UserMessage";
 
+interface RiasecCounter {
+  realista: number;
+  investigador: number;
+  artistico: number;
+  social: number;
+  emprendedor: number;
+  convencional: number;
+}
 interface MessageProps {
   message: string,
   user: boolean
@@ -11,13 +19,27 @@ export default function ChatPage() {
 
     const [chatMessages, setChatMessages] = useState<MessageProps[]>([]);
     const [riasecCounter, setRiasecCounter] = useState({
-        r: 0,
-        i: 0,
-        a: 0,
-        s: 0,
-        e: 0,
-        c: 0,
+        realista: 0,
+        investigador: 0,
+        artistico: 0,
+        social: 0,
+        emprendedor: 0,
+        convencional: 0,
     })
+    const [actualState, setActualState] = useState("realista");
+    const [askedQuestions, setAskedQuestions] = useState<Number[]>([]);
+    const [fails, setFails] = useState(0);
+    const states = ["realista", "investigador", "artistico", "social", "emprendedor", "convencional"];
+
+    useEffect(() => {
+        if (riasecCounter[actualState as keyof RiasecCounter] > 3 || fails >= 3) {
+            setActualState(states[states.indexOf(actualState)+1]);
+        }
+        if (fails === 3) {
+            setFails(0);
+        }
+    }, [riasecCounter, fails])
+
 
     return <div className="h-full flex items-center justify-center py-10">
         <div className={`w-fit flex flex-col ${chatMessages.length===0?'items-center':'h-full'}`}>
@@ -41,6 +63,12 @@ export default function ChatPage() {
                 setChatMessages={setChatMessages}
                 riasec_counter={riasecCounter}
                 setRiasecCounter={setRiasecCounter}
+                actual_state={actualState}
+                setActualState={setActualState}
+                asked_questions={askedQuestions}
+                fails={fails}
+                setFails={setFails}
+                setAskedQuestions={setAskedQuestions}
             />
         </div>
     </div>
