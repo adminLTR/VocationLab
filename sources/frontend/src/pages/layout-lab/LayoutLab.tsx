@@ -45,9 +45,9 @@ export default function LayoutLab() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#D2D1FF] to-[#D2D1FF] opacity-50 z-0" />
 
         {/* Contenido del sidebar */}
-        <div className="relative z-10 py-8 px-6 flex flex-col h-full">
+        <div className="relative z-10 py-8 px-6 flex flex-col h-full overflow-hidden">
           {/* Logo */}
-          <div className="flex items-center flex-shrink-0 text-xl font-bold text-gray-800">
+          <div className="w-full flex items-center flex-shrink-0 text-xl font-bold text-gray-800 overflow-hidden">
             <Link to="/" className="flex items-center text-[18px]">
               <img src="/logo_header.png" alt="Logo" className="mr-2" width={24} />
               <span >VocationLab</span>
