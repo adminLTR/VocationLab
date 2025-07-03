@@ -57,6 +57,7 @@ class Command(BaseCommand):
             },
 
         }
+        
 
         collection.add(
             documents=saludos,
