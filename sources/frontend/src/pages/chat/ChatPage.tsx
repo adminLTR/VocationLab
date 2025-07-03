@@ -27,7 +27,7 @@ export default function ChatPage() {
         convencional: 0,
     })
     const [actualState, setActualState] = useState("realista");
-    const [askedQuestions, setAskedQuestions] = useState<Number[]>([]);
+    const [askedQuestions, setAskedQuestions] = useState<number[]>([]);
     const [fails, setFails] = useState(0);
     const states = ["realista", "investigador", "artistico", "social", "emprendedor", "convencional"];
 

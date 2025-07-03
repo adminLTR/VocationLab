@@ -34,7 +34,7 @@ def chat_view(request):
         if user_id:
             pass            
 
-        category = CategoryAnswer.objects.get(str(actual_state).capitalize())
+        category = CategoryAnswer.objects.get(category=str(actual_state).capitalize())
         questions = Question.objects.filter(category=category).exclude(id__in=list(asked_questions))
 
         question = rd.choice(list(questions))
@@ -43,7 +43,8 @@ def chat_view(request):
         return JsonResponse({
             # 'message': f'{results["documents"][0][0]}',
             'message': f'{question.question}',
-            # 'label' : f'{results["metadatas"][0][0]}'
+            'id_question' : question.pk,
+            'label' : f'{results["metadatas"][0][0]["label"]}'
         })
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON data'}, status=400)
