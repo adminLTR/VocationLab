@@ -25,6 +25,8 @@ def chat_view(request):
             n_results=1
         )
 
+        print(results)
+
         if user_id:
             pass            
 

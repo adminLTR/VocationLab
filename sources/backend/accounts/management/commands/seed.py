@@ -72,8 +72,8 @@ class Command(BaseCommand):
         }
 
         collection.add(
-            documents=saludos,
-            ids=[f'saludo_{i+1}' for i in range(len(saludos))],
+            documents=["Hola me llamo IvAn", "Naranjas y manzanas frutas"],
+            ids=[f'saludo_{i+1}' for i in range(2)],
         )
 
     def seed_questions(self):
