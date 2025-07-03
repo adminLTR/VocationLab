@@ -31,3 +31,14 @@ class PossibleAnswers(models.Model):
     class Meta:
         verbose_name = "Posible respuesta",
         verbose_name_plural = "Posibles respuestas"
+
+class Question(models.Model):
+    question = models.CharField(max_length=500, verbose_name="Pregunta")
+    category = models.ForeignKey(CategoryAnswer, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.category}: {self.question}"
+    
+    class Meta:
+        verbose_name = "Pregunta",
+        verbose_name_plural = "Preguntas"
