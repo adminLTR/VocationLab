@@ -2,12 +2,9 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-interface ChatApiProps {
-    user_message: string,
-    actual_state: string,
-    asked_questions: Number[],
-    user_id?: Number,
-}
-export async function chatApi(data:ChatApiProps) {
-    return await axios.post(API_URL+'chat/', data);
-}
+export const chatApi = (payload: {
+  message: string;
+  history: { role: 'user' | 'assistant'; content: string }[];
+}) => {
+  return axios.post(API_URL + "chat/", payload);
+};

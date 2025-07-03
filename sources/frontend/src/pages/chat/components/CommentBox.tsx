@@ -1,82 +1,51 @@
-// CommentInput.tsx
-import { act, useEffect, useState } from 'react';
-import Picker from '@emoji-mart/react';
-import data from '@emoji-mart/data';
-import { 
-  chatApi
-} from '../../../services/api';
+// components/CommentBox.tsx
+import { useState } from "react";
+import Picker from "@emoji-mart/react";
+import data from "@emoji-mart/data";
+import { chatApi } from "../../../services/api";
+import { ChatHistoryItem } from "../ChatPage";
 
-interface MessageProps {
-  message: string,
-  user: boolean
-}
-interface RiasecCounter {
-  realista: number;
-  investigador: number;
-  artistico: number;
-  social: number;
-  emprendedor: number;
-  convencional: number;
+
+interface Props {
+  chatHistory: ChatHistoryItem[];
+  setChatHistory: React.Dispatch<React.SetStateAction<ChatHistoryItem[]>>;
 }
 
-interface CommentBoxProps {
-  chatMessages: MessageProps[];
-  setChatMessages: React.Dispatch<React.SetStateAction<MessageProps[]>>;
-  riasec_counter: RiasecCounter;
-  setRiasecCounter: React.Dispatch<React.SetStateAction<RiasecCounter>>;
-  actual_state: string;
-  setActualState: React.Dispatch<React.SetStateAction<string>>
-  asked_questions: number[];
-  setAskedQuestions: React.Dispatch<React.SetStateAction<number[]>>;
-  fails: number;
-  setFails: React.Dispatch<React.SetStateAction<number>>
-}
-
-export default function CommentBox({ chatMessages, setChatMessages, 
-    riasec_counter, setRiasecCounter, 
-    asked_questions, setAskedQuestions, 
-    fails,
-    setFails,
-    actual_state, setActualState }: CommentBoxProps) 
-  {
-
-  const [comment, setComment] = useState('');
+export default function CommentBox({ chatHistory, setChatHistory }: Props) {
+  const [comment, setComment] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   const addEmoji = (emoji: any) => {
-    setComment(prev => prev + emoji.native);
-
+    setComment((prev) => prev + emoji.native);
   };
 
   const handleSend = async () => {
-    const user_message = comment.trim();
-    setShowEmojiPicker(false)
-    setComment('');
-    if (user_message) {
+    const userMessage = comment.trim();
+    if (!userMessage) return;
 
-      setChatMessages(prev => [...prev, { message: user_message, user: true }]);
-      let botMessage;
+    setComment("");
+    setShowEmojiPicker(false);
 
-      const response = await chatApi({ user_message, actual_state, asked_questions });
-      botMessage = response.data.message
+    const updatedHistory = [...chatHistory, { role: "user", content: userMessage } as const];
+    setChatHistory(updatedHistory);
 
-      console.log(response.data)
+    try {
+      const response = await chatApi({
+        message: userMessage,
+        history: chatHistory,
+      });
 
-      if (response.data.label) {
-        setRiasecCounter({...riasec_counter, [actual_state as keyof RiasecCounter]: riasec_counter[actual_state as keyof RiasecCounter] + 1,})          
-      } else {
-        setFails(fails+1);
-      }
-      if (response.data.id_question) {
-        setAskedQuestions([...asked_questions, response.data.id_question])
-      }
+      const botReply = response.data.response;
+      const newHistory = [
+        ...updatedHistory,
+        { role: "assistant", content: botReply } as const
+      ];
 
-    setChatMessages(prev => [...prev, { message: botMessage, user: false }]);
-    
+      setChatHistory(newHistory);
+    } catch (err) {
+      console.error("Error al obtener respuesta del bot", err);
     }
   };
-
-  
 
   return (
     <div className="relative w-full mx-auto">
@@ -86,12 +55,12 @@ export default function CommentBox({ chatMessages, setChatMessages,
           className="w-full resize-none outline-none placeholder:text-gray-200 text-white"
           placeholder="Dile hola a IvAn..."
           value={comment}
-          onChange={e => setComment(e.target.value)}
+          onChange={(e) => setComment(e.target.value)}
         />
         <div className="flex justify-end items-center gap-4">
           <button
             onClick={() => setShowEmojiPicker(!showEmojiPicker)}
-            className={`cursor-pointer text-lg hover:text-gray-200 transition ${showEmojiPicker ? 'text-gray-200' : 'text-white-400'}`}
+            className="cursor-pointer text-lg hover:text-gray-200 transition"
           >
             <i className="fa-regular fa-face-smile"></i>
           </button>

@@ -1,50 +1,45 @@
-from .models import *
-from django.http import JsonResponse
-from .services import chroma_client
+from openai import OpenAI
+from openai.types.chat import ChatCompletionMessageParam
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import os
 import json
-import random as rd
 
-# Create your views here.
+client = OpenAI(api_key=os.getenv("OPENAI_KEY"))
+
+SYSTEM_MESSAGE: ChatCompletionMessageParam = {
+    "role": "system",
+    "content": (
+        "Eres un psicólogo vocacional que guía a un estudiante de secundaria "
+        "en un test basado en RIASEC. Tu objetivo es conocer al estudiante, "
+        "hacer preguntas abiertas según el modelo RIASEC, y explorar intereses, habilidades, valores y entorno laboral."
+    )
+}
+
 @csrf_exempt
-def chat_view(request):
-    if request.method != "POST":
-        return JsonResponse({'error': 'Only POST requests are allowed'}, status=405)
-    
-    try:
-        # Decode the request body and parse the JSON data
-        data = json.loads(request.body.decode('utf-8'))
+def vocacional_chat(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            user_message = data.get("message")
+            history = data.get("history", [])
 
-        # Access data from the parsed JSON
-        user_message = data.get('user_message')
-        user_id = data.get('user_id')
-        # riasec_counter = data.get("riasec_counter")
-        actual_state = data.get("actual_state")
-        asked_questions = data.get("asked_questions")
+            messages: list[ChatCompletionMessageParam] = [SYSTEM_MESSAGE] + history + [
+                {"role": "user", "content": user_message}
+            ]
 
-        collection = chroma_client.get_or_create_collection(name="VocationLab")
+            response = client.chat.completions.create(
+                model="gpt-4",
+                messages=messages,
+                temperature=0.7,
+                max_tokens=200,
+            )
 
-        results = collection.query(
-            query_texts=[user_message],
-            n_results=1
-        )
+            return JsonResponse({
+                "response": response.choices[0].message.content
+            })
 
-        print(results)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
 
-        if user_id:
-            pass            
-
-        category = CategoryAnswer.objects.get(category=str(actual_state).capitalize())
-        questions = Question.objects.filter(category=category).exclude(id__in=list(asked_questions))
-
-        question = rd.choice(list(questions))
-
-
-        return JsonResponse({
-            # 'message': f'{results["documents"][0][0]}',
-            'message': f'{question.question}',
-            'id_question' : question.pk,
-            'label' : f'{results["metadatas"][0][0]["label"]}'
-        })
-    except json.JSONDecodeError:
-        return JsonResponse({'error': 'Invalid JSON data'}, status=400)
+    return JsonResponse({"error": "Método no permitido"}, status=405)
