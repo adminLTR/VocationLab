@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
+import bgSvg from "../../assets/bg-svg/bg-chat.svg"
 
 export default function LayoutLab() {
 
 
     return (
         <div className="flex h-full">
+            <img
+                src={bgSvg}
+                alt="bg"
+                className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+            />
             <aside className="relative h-full w-2/12">
                 <div className="absolute inset-0 bg-gradient-to-b from-[#D2D1FF] to-[#D2D1FF] opacity-50 z-0"></div>
-                
+
                 <div className="relative z-10 py-8 px-6 flex flex-col h-full">
                     <div className="flex items-center flex-shrink-0 text-xl font-bold text-gray-800">
                         <Link to="/" className="flex items-center text-[18px]">
@@ -54,7 +60,7 @@ export default function LayoutLab() {
             </aside>
 
             <main className="grow">
-                <Outlet/>
+                <Outlet />
             </main>
         </div>
     )
