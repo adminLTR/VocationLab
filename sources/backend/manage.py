@@ -6,6 +6,13 @@ import sys
 
 def main():
     """Run administrative tasks."""
+    # Set environment based on command line argument or default to development
+    if len(sys.argv) > 1 and sys.argv[1] == 'runserver' and '--production' in sys.argv:
+        os.environ.setdefault('DJANGO_ENV', 'production')
+        sys.argv.remove('--production')
+    else:
+        os.environ.setdefault('DJANGO_ENV', 'development')
+    
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
     try:
         from django.core.management import execute_from_command_line
