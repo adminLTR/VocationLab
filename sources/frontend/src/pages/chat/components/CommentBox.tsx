@@ -26,8 +26,8 @@ interface CommentBoxProps {
   setRiasecCounter: React.Dispatch<React.SetStateAction<RiasecCounter>>;
   actual_state: string;
   setActualState: React.Dispatch<React.SetStateAction<string>>
-  asked_questions: Number[];
-  setAskedQuestions: React.Dispatch<React.SetStateAction<Number[]>>;
+  asked_questions: number[];
+  setAskedQuestions: React.Dispatch<React.SetStateAction<number[]>>;
   fails: number;
   setFails: React.Dispatch<React.SetStateAction<number>>
 }
@@ -56,21 +56,23 @@ export default function CommentBox({ chatMessages, setChatMessages,
 
       setChatMessages(prev => [...prev, { message: user_message, user: true }]);
       let botMessage;
-      if (chatMessages.length < 1) {
-        botMessage = "¡Hola! Soy IvAn, tu guía para ayudarte a descubrir qué tipo de profesiones podrían gustarte o en las que podrías destacar. Vamos a conversar sobre tus intereses, habilidades y valores. No hay respuestas correctas o incorrectas, solo cuéntame lo que piensas o sientes. ¿Listo para comenzar?"
-      } else {
-        const response = await chatApi({ user_message, actual_state, asked_questions });
-        botMessage = response.data.message
 
-        if (response.data.label) {
-          setRiasecCounter({...riasec_counter, [actual_state as keyof RiasecCounter]: riasec_counter[actual_state as keyof RiasecCounter] + 1,})          
-        } else {
-          setFails(fails+1);
-        }
+      const response = await chatApi({ user_message, actual_state, asked_questions });
+      botMessage = response.data.message
+
+      console.log(response.data)
+
+      if (response.data.label) {
+        setRiasecCounter({...riasec_counter, [actual_state as keyof RiasecCounter]: riasec_counter[actual_state as keyof RiasecCounter] + 1,})          
+      } else {
+        setFails(fails+1);
+      }
+      if (response.data.id_question) {
+        setAskedQuestions([...asked_questions, response.data.id_question])
       }
 
-      setChatMessages(prev => [...prev, { message: botMessage, user: false }]);
-      
+    setChatMessages(prev => [...prev, { message: botMessage, user: false }]);
+    
     }
   };
 

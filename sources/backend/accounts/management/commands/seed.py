@@ -8,6 +8,7 @@ import chromadb
 from chat.models import CategoryAnswer, Question
 import csv
 import uuid
+import time
 
 fake = Faker()
 class Command(BaseCommand):
@@ -22,6 +23,7 @@ class Command(BaseCommand):
         self.seed_chroma()
         
     def create_users(self, num_users=10):
+        User.objects.all().delete()
         if not User.objects.filter(username='admin').exists():
             User.objects.create_superuser(
                 username='admin',
@@ -50,24 +52,32 @@ class Command(BaseCommand):
         if not os.path.exists(csv_path):
             self.stderr.write(self.style.ERROR(f"No se encontró el archivo: {csv_path}"))
             return
-
+        documents = []
+        metadatas = []
         with open(csv_path, newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile)
+            reader = csv.DictReader(csvfile, delimiter=";")
             count = 0
-            for row in reader:
+            for i, row in enumerate(reader):
                 document = row.get('document', '').strip()
                 label_str = str(row.get('label', '')).strip().lower()
-                label = label_str == 'TRUE' or label_str == '1'
+                label = label_str == 'true' or label_str == '1' or label_str == 'verdadero'
 
+                # print(f"[{i}] DOC: {document} | LABEL: {label_str} → {label}")  # <--- agrega esto
+                # time.sleep(.3)
                 if document:
-                    collection.add(
-                        documents=[document],
-                        ids=[str(uuid.uuid4())],
-                        metadatas=[{'label': label}]
-                    )
+                    documents.append(document)
+                    metadatas.append({'label' : label})
                     count += 1
+                else:
+                    print(f"[{i}] ⚠️ Documento vacío")
 
-        self.stdout.write(self.style.SUCCESS(f'{count} documentos insertados en ChromaDB.'))
+            collection.add(
+                documents=[document],
+                ids=[str(uuid.uuid4())],
+                metadatas=[{'label': label}]
+            )
+            self.stdout.write(self.style.SUCCESS(f'{count} documentos insertados en ChromaDB.'))
+
 
 
     def seed_questions(self):
