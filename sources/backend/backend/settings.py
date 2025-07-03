@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-$^1d63guxrfe1pkr6rex-)@ail9=_4!y1^q^areb(z#02c8*69
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vocationlab.onrender.com']
 
 
 # Application definition
