@@ -39,7 +39,7 @@ export default function CarrerasPage() {
             shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
         },
     ]
-    return <div className="h-full overflow-scroll no-scrollbar bg-sky-100">
+    return <div className="h-full overflow-scroll no-scrollbar">
         <div className="py-10 text-center">
             <h2 className="font-sf font-semibold leading-[0.8] md:m-0 m-auto
             text-[40px] md:text-[40px] lg:text-[60px]">
