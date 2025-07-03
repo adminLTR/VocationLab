@@ -30,9 +30,13 @@ export default function CommentBox({chatMessages, setChatMessages} : CommentBoxP
     if (user_message) {
 
       setChatMessages(prev => [...prev, { message: user_message, user: true }]);
-
-      const response = await chatApi({ user_message });
-      const botMessage = response.data.message;
+      let botMessage;
+      if (chatMessages.length < 1) {
+        botMessage = "¡Hola! Soy IvAn, tu guía para ayudarte a descubrir qué tipo de profesiones podrían gustarte o en las que podrías destacar. Vamos a conversar sobre tus intereses, habilidades y valores. No hay respuestas correctas o incorrectas, solo cuéntame lo que piensas o sientes. ¿Listo para comenzar?"
+      } else {
+        const response = await chatApi({ user_message });
+        botMessage = response.data.message
+      }
 
       setChatMessages(prev => [...prev, { message: botMessage, user: false }]);
       
