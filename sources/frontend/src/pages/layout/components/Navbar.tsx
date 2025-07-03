@@ -16,8 +16,8 @@ function NavLink({children, to, active=false} : NavLinkProps) {
 export default function Navbar() {
     const location = useLocation();
 
-    return <nav className="flex justify-center font-inter space-x-4 pt-4 lg:py-0 px-6 rounded-3xl mt-2 md:mt-0 bg-white
-    flex-col lg:flex-row text-[14px] min-w-[224px]">
+    return <nav className="w-auto flex justify-center font-inter space-x-4 pt-4 lg:py-0 px-6 rounded-3xl mt-2 md:mt-0 bg-white
+    flex-col lg:flex-row text-[14px]">
         <NavLink to="/" active={location.pathname === '/'}>
             <span className="inline-block lg:hidden">
                 <i className="fa-solid fa-house"></i>                
