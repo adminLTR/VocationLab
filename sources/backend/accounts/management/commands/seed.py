@@ -44,38 +44,23 @@ class Command(BaseCommand):
         collection = chroma_client.get_or_create_collection(name="VocationLab")
 
       
-        data = {
-            "saludos" : {
-                "documents" : [
-                    "Hola, necesito ayuda",
-                    "Buenos dias. ¿Cómo te llamas?",
-                    "Buenas tardes. Te saludo.",
-                    "Esto es un saludo. Te mando saludos",
-                    "¿Cómo funciona este bot?",
-                    "Hola. Explicame cómo funcionas",
-                    "¿Qué es esto? ¿Cómo funcionas?",
-                ],
+        data = [
+            {
+                "document" : "",
+                "label" : True
             },
-            "abiertas" : {
-                "documents" : [
-                    "Me llamo Asthri, tengo 16 años, soy de Perú y estudio en un colegio privado.",
-                    "Soy Jose, mi edad es 17.",
-                    "Mi nombre es Joanne. 13 años de colegio público en Lima.",
-                    "Lucius, 14, Cajamarca, privado.",
-                    "¡Hola! Me llamo María y tengo 15 años. Soy de Cajamarca, una ciudad súper bonita con montañas y vacas por todos lados jaja. Estudio en un cole público",
-                    "Me llamo Luis tengo 14 años soy de Ayacucho. Estoy en un colegio público.",
-                    "Soy Camila, creo que tengo 16 (sí, 16 jaja). Vivo en Lima, en San Juan de Lurigancho. Estudio en un colegio privado  o bueno, creo que es particular  sí.",
-                    "Soy André, tengo 17 años, soy de Piura y estudio en un colegio privado.",
-                    "Ola, me yamó Jhoni, tengo 13 añitos, soii de Puno y voi a un cole pùblicoo.",
-                ],
+            {
+                "document" : "",
+                "label" : True
             },
-
-        }
+        ]
 
         collection.add(
-            documents=saludos,
-            ids=[f'saludo_{i+1}' for i in range(len(saludos))],
+            documents=[document["document"] for document in data],
+            ids=[f'{i+1}' for i in range(len(data))],
+            metadatas = [{'label': document["label"]} for document in data]
         )
+
 
     def seed_questions(self):
         categories_with_questions = {
