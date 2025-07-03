@@ -48,7 +48,7 @@ export default function CommentBox({ chatHistory, setChatHistory }: Props) {
   };
 
   return (
-    <div className="relative w-full mx-auto">
+    <div className={`relative w-full mx-auto`}>
       <div className="bg-[#8379F5] rounded-4xl text-white p-4 shadow-[0_0_20px_rgba(0,0,0,0.1)]">
         <textarea
           rows={2}
