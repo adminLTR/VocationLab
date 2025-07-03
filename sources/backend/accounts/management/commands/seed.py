@@ -5,7 +5,9 @@ from faker import Faker
 from accounts.models import *
 import os
 import chromadb
-from sources.backend.chat.models import CategoryAnswer, Question
+from chat.models import CategoryAnswer, Question
+import csv
+import uuid
 
 fake = Faker()
 class Command(BaseCommand):
@@ -16,6 +18,7 @@ class Command(BaseCommand):
         User.objects.all().delete()
 
         self.create_users()
+        self.seed_questions()
         self.seed_chroma()
         
     def create_users(self, num_users=10):
@@ -43,23 +46,28 @@ class Command(BaseCommand):
         chroma_client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
         collection = chroma_client.get_or_create_collection(name="VocationLab")
 
-      
-        data = [
-            {
-                "document" : "",
-                "label" : True
-            },
-            {
-                "document" : "",
-                "label" : True
-            },
-        ]
+        csv_path = os.path.join('accounts', 'seeds', 'embeddings.csv')  # Ajusta según tu app
+        if not os.path.exists(csv_path):
+            self.stderr.write(self.style.ERROR(f"No se encontró el archivo: {csv_path}"))
+            return
 
-        collection.add(
-            documents=[document["document"] for document in data],
-            ids=[f'{i+1}' for i in range(len(data))],
-            metadatas = [{'label': document["label"]} for document in data]
-        )
+        with open(csv_path, newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            count = 0
+            for row in reader:
+                document = row.get('document', '').strip()
+                label_str = str(row.get('label', '')).strip().lower()
+                label = label_str == 'TRUE' or label_str == '1'
+
+                if document:
+                    collection.add(
+                        documents=[document],
+                        ids=[str(uuid.uuid4())],
+                        metadatas=[{'label': label}]
+                    )
+                    count += 1
+
+        self.stdout.write(self.style.SUCCESS(f'{count} documentos insertados en ChromaDB.'))
 
 
     def seed_questions(self):
@@ -107,6 +115,9 @@ class Command(BaseCommand):
                 "¿Cómo te sientes cuando alguien te pide algo con urgencia y todo está en su sitio?",
             ]
         }
+
+        CategoryAnswer.objects.all().delete()
+        Question.objects.all().delete()
             
         for category_name, questions in categories_with_questions.items():
             category, created = CategoryAnswer.objects.get_or_create(category=category_name)

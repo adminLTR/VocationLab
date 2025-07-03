@@ -12,7 +12,7 @@ class Message(models.Model):
         verbose_name_plural = "Mensajes"
 
 class CategoryAnswer(models.Model):
-    category = models.CharField(max_length=100, verbose_name="Categoría")
+    category = models.CharField(max_length=100, verbose_name="Categoría", null=True)
     
     def __str__(self):
         return self.category
@@ -20,17 +20,6 @@ class CategoryAnswer(models.Model):
     class Meta:
         verbose_name = "Categoría de respuesta"
         verbose_name_plural = "Categorías de respuesta"
-
-class PossibleAnswers(models.Model):
-    answer = models.CharField(max_length=1000, verbose_name="Respuesta")
-    category = models.ForeignKey(CategoryAnswer, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.category}: {self.answer}"
-    
-    class Meta:
-        verbose_name = "Posible respuesta",
-        verbose_name_plural = "Posibles respuestas"
 
 class Question(models.Model):
     question = models.CharField(max_length=500, verbose_name="Pregunta")
