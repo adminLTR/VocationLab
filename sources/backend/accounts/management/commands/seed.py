@@ -53,7 +53,7 @@ class Command(BaseCommand):
                     "¿Cómo funciona este bot?",
                     "Hola. Explicame cómo funcionas",
                     "¿Qué es esto? ¿Cómo funcionas?",
-                ],                
+                ],
             },
 
         }
