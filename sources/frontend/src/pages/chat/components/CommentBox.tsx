@@ -1,5 +1,5 @@
 // CommentInput.tsx
-import { useState } from 'react';
+import { act, useEffect, useState } from 'react';
 import Picker from '@emoji-mart/react';
 import data from '@emoji-mart/data';
 import { 
@@ -11,12 +11,12 @@ interface MessageProps {
   user: boolean
 }
 interface RiasecCounter {
-  r: number;
-  i: number;
-  a: number;
-  s: number;
-  e: number;
-  c: number;
+  realista: number;
+  investigador: number;
+  artistico: number;
+  social: number;
+  emprendedor: number;
+  convencional: number;
 }
 
 interface CommentBoxProps {
@@ -24,9 +24,22 @@ interface CommentBoxProps {
   setChatMessages: React.Dispatch<React.SetStateAction<MessageProps[]>>;
   riasec_counter: RiasecCounter;
   setRiasecCounter: React.Dispatch<React.SetStateAction<RiasecCounter>>;
+  actual_state: string;
+  setActualState: React.Dispatch<React.SetStateAction<string>>
+  asked_questions: Number[];
+  setAskedQuestions: React.Dispatch<React.SetStateAction<Number[]>>;
+  fails: number;
+  setFails: React.Dispatch<React.SetStateAction<number>>
 }
 
-export default function CommentBox({ chatMessages, setChatMessages, riasec_counter, setRiasecCounter }: CommentBoxProps) {
+export default function CommentBox({ chatMessages, setChatMessages, 
+    riasec_counter, setRiasecCounter, 
+    asked_questions, setAskedQuestions, 
+    fails,
+    setFails,
+    actual_state, setActualState }: CommentBoxProps) 
+  {
+
   const [comment, setComment] = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
@@ -46,19 +59,13 @@ export default function CommentBox({ chatMessages, setChatMessages, riasec_count
       if (chatMessages.length < 1) {
         botMessage = "¡Hola! Soy IvAn, tu guía para ayudarte a descubrir qué tipo de profesiones podrían gustarte o en las que podrías destacar. Vamos a conversar sobre tus intereses, habilidades y valores. No hay respuestas correctas o incorrectas, solo cuéntame lo que piensas o sientes. ¿Listo para comenzar?"
       } else {
-        const response = await chatApi({ user_message, riasec_counter });
+        const response = await chatApi({ user_message, actual_state, asked_questions });
         botMessage = response.data.message
 
-        if (response.data.category) {
-          switch (response.data.category) {
-            case "realista": setRiasecCounter({...riasec_counter, r:riasec_counter.r+1}); break;
-            case "investigador": setRiasecCounter({...riasec_counter, i:riasec_counter.i+1}); break;
-            case "artistico": setRiasecCounter({...riasec_counter, a:riasec_counter.a+1}); break;
-            case "social": setRiasecCounter({...riasec_counter, s:riasec_counter.s+1}); break;
-            case "emprendedor": setRiasecCounter({...riasec_counter, e:riasec_counter.e+1}); break;
-            case "convencional": setRiasecCounter({...riasec_counter, c:riasec_counter.c+1}); break;          
-            default: break;
-          }
+        if (response.data.label) {
+          setRiasecCounter({...riasec_counter, [actual_state as keyof RiasecCounter]: riasec_counter[actual_state as keyof RiasecCounter] + 1,})          
+        } else {
+          setFails(fails+1);
         }
       }
 
@@ -66,6 +73,8 @@ export default function CommentBox({ chatMessages, setChatMessages, riasec_count
       
     }
   };
+
+  
 
   return (
     <div className="relative w-full mx-auto">
