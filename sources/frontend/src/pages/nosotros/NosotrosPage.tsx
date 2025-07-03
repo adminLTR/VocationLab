@@ -34,7 +34,7 @@ export default function NosotrosPage() {
             position: "n8n Senior"
         },
     ]
-    return <div className="relative w-full">
+    return <div className="relative w-full px-8 md:px-8">
         <img
             src={bgSvg}
             alt="bg"
@@ -49,7 +49,7 @@ export default function NosotrosPage() {
                 </span>
             </h1>
             <p className="text-[#BDCFE2] text-[20px] md:text-[30px] lg:text-[40px] font-sf font-ligth mt-1 mb-4">Apasionados. Creativos. Trabajadores.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 gap-y-6 justify-items-center w-fit m-auto my-6">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-10 gap-y-6 justify-items-center w-fit m-auto my-6">
                 {data.map((usuario, index) => {
                     return <Card
                         {...usuario}
