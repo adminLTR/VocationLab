@@ -10,11 +10,23 @@ interface MessageProps {
   message: string,
   user: boolean
 }
-interface CommentBoxProps {
-  chatMessages: MessageProps[]
-  setChatMessages: React.Dispatch<React.SetStateAction<MessageProps[]>>
+interface RiasecCounter {
+  r: number;
+  i: number;
+  a: number;
+  s: number;
+  e: number;
+  c: number;
 }
-export default function CommentBox({chatMessages, setChatMessages} : CommentBoxProps) {
+
+interface CommentBoxProps {
+  chatMessages: MessageProps[];
+  setChatMessages: React.Dispatch<React.SetStateAction<MessageProps[]>>;
+  riasec_counter: RiasecCounter;
+  setRiasecCounter: React.Dispatch<React.SetStateAction<RiasecCounter>>;
+}
+
+export default function CommentBox({ chatMessages, setChatMessages, riasec_counter, setRiasecCounter }: CommentBoxProps) {
   const [comment, setComment] = useState('');
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
@@ -34,8 +46,20 @@ export default function CommentBox({chatMessages, setChatMessages} : CommentBoxP
       if (chatMessages.length < 1) {
         botMessage = "¡Hola! Soy IvAn, tu guía para ayudarte a descubrir qué tipo de profesiones podrían gustarte o en las que podrías destacar. Vamos a conversar sobre tus intereses, habilidades y valores. No hay respuestas correctas o incorrectas, solo cuéntame lo que piensas o sientes. ¿Listo para comenzar?"
       } else {
-        const response = await chatApi({ user_message });
+        const response = await chatApi({ user_message, riasec_counter });
         botMessage = response.data.message
+
+        if (response.data.category) {
+          switch (response.data.category) {
+            case "realista": setRiasecCounter({...riasec_counter, r:riasec_counter.r+1}); break;
+            case "investigador": setRiasecCounter({...riasec_counter, i:riasec_counter.i+1}); break;
+            case "artistico": setRiasecCounter({...riasec_counter, a:riasec_counter.a+1}); break;
+            case "social": setRiasecCounter({...riasec_counter, s:riasec_counter.s+1}); break;
+            case "emprendedor": setRiasecCounter({...riasec_counter, e:riasec_counter.e+1}); break;
+            case "convencional": setRiasecCounter({...riasec_counter, c:riasec_counter.c+1}); break;          
+            default: break;
+          }
+        }
       }
 
       setChatMessages(prev => [...prev, { message: botMessage, user: false }]);

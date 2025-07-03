@@ -10,6 +10,14 @@ interface MessageProps {
 export default function ChatPage() {
 
     const [chatMessages, setChatMessages] = useState<MessageProps[]>([]);
+    const [riasecCounter, setRiasecCounter] = useState({
+        r: 0,
+        i: 0,
+        a: 0,
+        s: 0,
+        e: 0,
+        c: 0,
+    })
 
     return <div className="h-full flex items-center justify-center py-10">
         <div className={`w-fit flex flex-col ${chatMessages.length===0?'items-center':'h-full'}`}>
@@ -28,7 +36,12 @@ export default function ChatPage() {
                 </div>
             }
             
-            <CommentBox chatMessages={chatMessages} setChatMessages={setChatMessages}/>
+            <CommentBox 
+                chatMessages={chatMessages} 
+                setChatMessages={setChatMessages}
+                riasec_counter={riasecCounter}
+                setRiasecCounter={setRiasecCounter}
+            />
         </div>
     </div>
 }
