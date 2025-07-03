@@ -34,7 +34,7 @@ def chat_view(request):
         if user_id:
             pass            
 
-        category = CategoryAnswer.objects.get(actual_state)
+        category = CategoryAnswer.objects.get(str(actual_state).capitalize())
         questions = Question.objects.filter(category=category).exclude(id__in=list(asked_questions))
 
         question = rd.choice(list(questions))

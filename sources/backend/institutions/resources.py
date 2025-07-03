@@ -7,16 +7,6 @@ from import_export.fields import Field
 import openpyxl
 
 class InstitutionResource(resources.ModelResource):
-    # nro = Field(column_name='Nro')
-    # program = Field(column_name='Programa')
-    # universidad = Field(column_name='Universidad')
-    # tipo = Field(column_name='Tipo de gestión')
-    # nivel = Field(column_name='Nivel académico')
-    # modalidad = Field(column_name='Modalidad de estudio')
-    # departamento = Field(column_name='Departamento')
-    # provincia = Field(column_name='Provincia')
-    # distrito = Field(column_name='Distrito')
-    # direccion = Field(column_name='Dirección del local')
 
     def before_import_row(self, row, **kwargs):
         if row['Nivel académico'].strip().lower() != 'carrera profesional':

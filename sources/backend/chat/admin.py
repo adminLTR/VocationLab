@@ -11,11 +11,11 @@ class MessageAdmin(admin.ModelAdmin):
 class CategoryAnswerAdmin(admin.ModelAdmin):
     list_display = ("id", "category")
 
-@admin.register(PossibleAnswers)
-class PossibleAnswersAdmin(admin.ModelAdmin):
-    list_display = ("id", "category", "get_answer")
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ("id", "category", "question")
     list_filter = ("category",)
 
-    @admin.display(description="Respuesta")
-    def get_answer(self, obj):
-        return obj.answer if len(obj.answer) < 20 else obj.answer[:20]
+    @admin.display(description="Question")
+    def get_question(self, obj):
+        return obj.question if len(obj.question) < 40 else obj.question[:40] + "..."
