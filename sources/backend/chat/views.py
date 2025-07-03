@@ -22,6 +22,7 @@ def vocacional_chat(request):
         try:
             data = json.loads(request.body)
             user_message = data.get("message")
+            #print(f"Message: {user_message}")
             history = data.get("history", [])
 
             messages: list[ChatCompletionMessageParam] = [SYSTEM_MESSAGE] + history + [
