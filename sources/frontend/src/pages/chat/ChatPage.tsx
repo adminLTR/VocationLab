@@ -6,6 +6,7 @@ import UserMessage from "./components/UserMessage";
 export interface ChatHistoryItem {
   role: "user" | "assistant";
   content: string;
+  isLoading?: boolean;
 }
 
 export default function ChatPage() {
@@ -29,7 +30,7 @@ export default function ChatPage() {
         ) : (
           <div ref={chatContainerRef} className="w-full py-8 grow space-y-2 overflow-y-auto">
             {chatHistory.map((msg, index) => (
-              <UserMessage key={index} user={msg.role === "user"}>
+              <UserMessage key={index} user={msg.role === "user"} isLoading={msg.isLoading}>
                 {msg.content}
               </UserMessage>
             ))}
