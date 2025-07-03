@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import bgSvg from "../../assets/bg-svg/bg-chat.svg"
+import iconRobot from "../../assets/svg-lab/icon-robot.svg"
+import iconCareers from "../../assets/svg-lab/icon-careers.svg"
+import iconSchools from "../../assets/svg-lab/icon-schools.svg"
+import iconResources from "../../assets/svg-lab/icon-resources.svg"
+
 
 export default function LayoutLab() {
 
@@ -27,25 +32,25 @@ export default function LayoutLab() {
                             to="/lab"
                             className="flex font-inter text-[20px] font-semibold items-center gap-4 text-transparent bg-clip-text bg-gradient-to-t from-[#A629FF] to-[#1DD1CB]"
                         >
-                            <i className="w-1/12 fa-solid fa-robot"></i> Test
+                            <img src={iconRobot} alt="Test" className="w-5 h-5 md:w-6 md:h-6 shrink-0" /> Test
                         </Link>
                         <Link
                             to="/lab/carreras"
                             className="flex font-inter text-[20px] font-semibold items-center gap-4 text-transparent bg-clip-text bg-gradient-to-t from-[#A629FF] to-[#1DD1CB]"
                         >
-                            <i className="w-1/12 fa-solid fa-briefcase"></i> Carreras
+                            <img src={iconCareers} alt="Test" className="w-5 h-5 md:w-6 md:h-6 shrink-0" /> Carreras
                         </Link>
                         <Link
                             to="/lab/universidades"
                             className="flex font-inter text-[20px] font-semibold items-center gap-4 text-transparent bg-clip-text bg-gradient-to-t from-[#A629FF] to-[#1DD1CB]"
                         >
-                            <i className="w-1/12 fa-solid fa-graduation-cap"></i> Universidades
+                            <img src={iconSchools} alt="Test" className="w-5 h-5 md:w-6 md:h-6 shrink-0" /> Universidades
                         </Link>
                         <Link
                             to="/lab/recursos"
                             className="flex font-inter text-[20px] font-semibold items-center gap-4 text-transparent bg-clip-text bg-gradient-to-t from-[#A629FF] to-[#1DD1CB]"
                         >
-                            <i className="w-1/12 fa-solid fa-shapes"></i> Recursos
+                            <img src={iconResources} alt="Test" className="w-5 h-5 md:w-6 md:h-6 shrink-0" /> Recursos
                         </Link>
                     </nav>
                     <div>
