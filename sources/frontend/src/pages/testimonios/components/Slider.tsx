@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
 import { Autoplay, FreeMode } from "swiper/modules";
 import blurSvg from "../../../assets/blur-swipper.svg"
 

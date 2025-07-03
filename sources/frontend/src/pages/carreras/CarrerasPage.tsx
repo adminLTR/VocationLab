@@ -1,11 +1,5 @@
 import Card from "./components/Card"
 
-interface CareerProps {
-    imageUrl: string,
-    name: string,
-    shortDescription: string,
-}
-
 export default function CarrerasPage() {
     const careers = [
         {
