@@ -7,6 +7,7 @@ import NosotrosPage from "./pages/nosotros/NosotrosPage";
 import LayoutLab from "./pages/layout-lab/LayoutLab";
 import ChatPage from "./pages/chat/ChatPage"
 import CarrerasPage from "./pages/carreras/CarrerasPage";
+import RecursosPage from "./pages/recursos/RecursosPage";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {   
                 path: '/lab/carreras',
                 element: <CarrerasPage/>
+            },
+            {   
+                path: '/lab/recursos',
+                element: <RecursosPage/>
             },
         ]
     }
