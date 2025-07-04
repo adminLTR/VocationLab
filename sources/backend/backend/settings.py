@@ -142,6 +142,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:5173').split(',')
 
+# CSRF settings for production
+CSRF_TRUSTED_ORIGINS = [
+    'https://vocationlab.onrender.com',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000'
+]
+
 JAZZMIN_SETTINGS = {
     "site_title" : "VocationLab Admin",
     "site_header": "VocationLab",
