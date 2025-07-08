@@ -15,6 +15,7 @@ export default function CommentBox({ chatHistory, setChatHistory }: Props) {
   const [comment, setComment] = useState("");
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [step, setStep] = useState<number>(1);
 
   const addEmoji = (emoji: any) => {
     setComment((prev) => prev + emoji.native);
@@ -46,21 +47,28 @@ export default function CommentBox({ chatHistory, setChatHistory }: Props) {
       const response = await chatApi({
         message: userMessage,
         history: chatHistory,
+        step: step
       });
 
       const botReply = response.data.response;
+      const shouldAdvance = response.data.nextStep; 
       const newHistory = [
         ...updatedHistory,
         { role: "assistant", content: botReply } as const
       ];
 
       setChatHistory(newHistory);
+
+      if (shouldAdvance) {
+        setStep((prev: number) => prev + 1);
+      }
     } catch (err) {
       console.error("Error al obtener respuesta del bot", err);
       // Remove loading message on error
       setChatHistory(updatedHistory);
     } finally {
       setIsLoading(false);
+      console.log(`CURRENT STEP: ${step}`)
     }
   };
 

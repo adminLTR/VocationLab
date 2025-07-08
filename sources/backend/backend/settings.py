@@ -31,8 +31,6 @@ SECRET_KEY = 'django-insecure-$^1d63guxrfe1pkr6rex-)@ail9=_4!y1^q^areb(z#02c8*69
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() == 'true'
 
-ALLOWED_HOSTS = ['vocationlab.onrender.com', '127.0.0.1']
-
 
 # Application definition
 
@@ -150,7 +148,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:5173').split(',')
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS').split(',')
 
 # CSRF settings for production
 CSRF_TRUSTED_ORIGINS = [
