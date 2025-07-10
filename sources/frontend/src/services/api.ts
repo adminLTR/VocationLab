@@ -7,7 +7,7 @@ export const chatApi = (payload: {
   history: { role: 'user' | 'assistant'; content: string }[];
   step: number;
 }) => {
-  return axios.post(API_URL + "chat/", payload);
+  return axios.post(API_URL + "/chat/", payload);
 };
 
 export const institutionsApi = () => {
