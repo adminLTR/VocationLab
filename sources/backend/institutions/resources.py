@@ -4,7 +4,6 @@ from import_export.widgets import ForeignKeyWidget
 from .models import Career, Area, Institution
 from location.models import Region, City, District, Address
 from import_export.fields import Field
-import openpyxl
 
 class InstitutionResource(resources.ModelResource):
 

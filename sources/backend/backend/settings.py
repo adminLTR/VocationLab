@@ -15,8 +15,9 @@ from dotenv import load_dotenv
 import os
 
 # Load environment-specific .env file
-env_file = '.env.production' if os.getenv('DJANGO_ENV') == 'production' else '.env.development'
-load_dotenv(env_file)
+# env_file = '.env' if os.getenv('DJANGO_ENV') == 'production' else '.env.development'
+# load_dotenv(env_file)
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
