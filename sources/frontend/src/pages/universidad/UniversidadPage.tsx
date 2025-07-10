@@ -1,38 +1,29 @@
+import { useLoaderData } from "react-router-dom";
 import Card from "./components/Card"
+import { institutionsApi } from "../../services/api";
+import { useEffect } from "react";
 
+interface Institution {
+  id: number;
+  name: string;
+  short_name?: string;
+  description?: string;
+  logo: string; // si estás usando solo instituciones con logo
+  careers?: Career[];
+}
+
+interface Career {
+  id: number;
+  name: string;
+  image?: string;
+}
+export const loader = async (): Promise<{ institutions: Institution[] }> => {
+  const institutions = (await institutionsApi()).data;
+  return { institutions };
+};
 export default function UniversidadPage() {
-    const careers = [
-        {
-            imageUrl: '/ever.png',
-            name: 'UNMSM',
-            shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        },
-        {
-            imageUrl: '/ever.png',
-            name: 'Ingeniería Nacional de Ingeniería',
-            shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        },
-        {
-            imageUrl: '/ever.png',
-            name: 'Universidad Tecnológica del Perú',
-            shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        },
-        {
-            imageUrl: '/ever.png',
-            name: 'Universidad de Ingeniería y Tecnología',
-            shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        },
-        {
-            imageUrl: '/ever.png',
-            name: 'Universidad Peruana de Ciencias Aplicadas',
-            shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        },
-        {
-            imageUrl: '/ever.png',
-            name: 'Ingeniería del Callao',
-            shortDescription: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. '
-        },
-    ]
+    const { institutions } = useLoaderData() as { institutions: Institution[] };
+
     return <div className="h-full overflow-scroll no-scrollbar">
         <div className="py-10 text-center">
             <h2 className="font-sf font-semibold leading-[0.8] md:m-0 m-auto
@@ -46,9 +37,9 @@ export default function UniversidadPage() {
                 Estas son las universidades que ofrecen la carrera de tu vocación.
             </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-12 text-center flex-wrap">
-            {careers.map((career, index) => {
-                return <Card key={index} {...career}/>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-12 text-center flex-wrap">
+            {institutions.map((institution) => {
+                return <Card key={institution.id} {...institution}/>
             })}
         </div>
     </div>
